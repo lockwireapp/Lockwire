@@ -1,0 +1,28 @@
+{
+  "name": "lockwire",
+  "private": true,
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lockwireapp/Lockwire.git"
+  },
+  "scripts": {
+    "init": "pnpm ci && npm run firebase:auth",
+    "firebase:auth": "cd packages/backend && firebase login",
+    "backend:dev": "cd packages/backend/functions && npm run dev",
+    "browser:dev": "cd packages/browser && npm run dev",
+    "app:dev": "cd packages/application && npm run dev",
+    "lib:dev": "cd packages/lib && npm run dev",
+    "clean": "find . -name \"node_modules\" -type d -exec rm -rf {} +",
+    "app:build:android": "scripts/build-app.sh",
+    "dev": "sh scripts/dev.sh"
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/**/*"
+  ],
+  "devDependencies": {
+    "@types/react": "18.2.25",
+    "@types/react-dom": "18.2.11"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@lckw/lib",
+  "version": "0.0.1",
+  "author": "ralzinov",
+  "scripts": {
+    "dev": "cd ./crypto && npm run dev & cd ./models && npm run dev & cd ./services && npm run dev & cd ./utils && npm run dev",
+    "build": "cd ./crypto && npm run build & cd ./models && npm run build & cd ./services && npm run build & cd ./utils && npm run build"
+  }
+}

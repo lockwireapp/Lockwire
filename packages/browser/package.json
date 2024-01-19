@@ -1,0 +1,48 @@
+{
+    "name": "@lckw/browser",
+    "version": "0.0.1",
+    "author": "ralzinov",
+    "scripts": {
+        "dev": "plasmo dev --verbose",
+        "lint": "prettier --write \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
+        "lint:ci": "prettier -c \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --ext .js,.jsx,.ts,.tsx ./src",
+        "build": "plasmo build",
+        "package": "plasmo package"
+    },
+    "dependencies": {
+        "clsx": "2.1.0",
+        "firebase": "10.7.1",
+        "plasmo": "0.83.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-qrcode-logo": "2.9.0"
+    },
+    "devDependencies": {
+        "@types/chrome": "0.0.246",
+        "@types/node": "20.11.5",
+        "@typescript-eslint/eslint-plugin": "6.7.4",
+        "@typescript-eslint/parser": "6.7.4",
+        "eslint-plugin-react-hooks": "4.6.0",
+        "eslint": "8.51.0",
+        "eslint-config-prettier": "9.0.0",
+        "eslint-plugin-prettier": "5.0.0",
+        "eslint-plugin-react": "7.33.2",
+        "prettier": "3.1.1",
+        "ts-node": "10.9.2",
+        "typescript": "5.3.3"
+    },
+    "manifest": {
+        "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvVgs5B8Y0BpDrEA74FyMg90GQfIUiYn3nLzGoPnSP8VFfaJe4nEkQh/UOWVxLaWLz5GA049MDt3Yn553kWVkOLT/HgdchVsmkXYE5hFkw6b41QiSdB4Q8b8gOsFU5b3SuJwE1usIFMLSXPviM23bkJSQox+9jGJTYDcR+IxPNvIoxNx4X+NxBwH27H6aP+HxbYlcvD7VHiyuBHB5xanMCBcftCPDGTdzBX7VkODbmdEgI0Dr1d+9C3lyzxN635eVmxeafTJxRFTq1m3jGRVt392h1zlmKIyyDD3ZUxxk9M4c++Ot89QudOe8ED1rn9w+653EZYekYyuicmASsnBhGwIDAQAB",
+        "permissions": [
+            "gcm",
+            "storage",
+            "activeTab",
+            "scripting"
+        ],
+        "host_permissions": [
+            "http://127.0.0.1:5001/*",
+            "https://*/*"
+        ]
+    },
+    "private": true
+}

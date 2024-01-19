@@ -1,0 +1,20 @@
+{
+  "name": "@lckw/api",
+  "version": "0.0.1",
+  "author": "ralzinov",
+  "dependencies": {
+    "@lckw/lib-services": "0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
+  },
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}

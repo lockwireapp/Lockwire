@@ -1,0 +1,17 @@
+{
+  "name": "@lckw/lib-utils",
+  "version": "0.0.1",
+  "author": "ralzinov",
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "dependencies": {
+    "abab": "2.0.6"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}

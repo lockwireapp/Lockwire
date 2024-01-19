@@ -1,0 +1,18 @@
+{
+  "exclude": [
+    "**/node_modules"
+  ],
+  "include": ["./**/*.ts"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "lib": ["ES2015", "DOM"]
+  },
+
+}

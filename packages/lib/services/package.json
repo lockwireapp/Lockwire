@@ -1,0 +1,21 @@
+{
+  "name": "@lckw/lib-services",
+  "version": "0.0.1",
+  "author": "ralzinov",
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "dependencies": {
+    "class-validator": "0.14.1",
+    "firebase": "10.7.1"
+  },
+  "devDependencies": {
+    "@types/validator": "13.11.8"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}

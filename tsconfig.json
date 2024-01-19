@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "lib": ["ES2019", "DOM"]
+    }
+}
