@@ -11,10 +11,24 @@ export abstract class Pipe {
     protected abstract api: BaseAPIProvider;
     protected abstract messaging: MessagingService;
 
-    private encryptCredentials: ICredentials;
-    private decryptCredentials: ICredentials;
+    private _encryptCredentials: ICredentials | undefined = void 0;
+    private get encryptCredentials(): ICredentials {
+        if (!this._encryptCredentials) {
+            throw new Error('Pipe missing encrypt credentials. Please call init before use');
+        }
+        return this._encryptCredentials;
+    }
 
-    constructor(protected handlers: Record<MessageType, IPipeMessageHandler>) {}
+    private _decryptCredentials: ICredentials | undefined = void 0;
+    private get decryptCredentials(): ICredentials {
+        if (!this._decryptCredentials) {
+            throw new Error('Pipe missing decrypt credentials. Please call init before use');
+        }
+        return this._decryptCredentials;
+    };
+
+    constructor(protected handlers: Record<MessageType, IPipeMessageHandler>) {
+    }
 
     async create(props: IInitSessionProps): Promise<void> {
         const service = new SessionInitService(this.api, this.messaging);
@@ -28,9 +42,6 @@ export abstract class Pipe {
     }
 
     async push(data: IMessageData): Promise<void> {
-        if (!this.encryptCredentials) {
-            throw new Error('Pipe is not initialized');
-        }
         const messageDataBox = MessageDataDTO.create(data);
         const messageDataEncrypted = MessageBox.encrypt(messageDataBox.toBase64(), this.encryptCredentials);
         await this.messaging.send(messageDataEncrypted);
@@ -38,8 +49,8 @@ export abstract class Pipe {
 
     init({ secretKey, key, cpKey }: ISession): Pipe {
         this.subscribeMessageHandlers();
-        this.encryptCredentials = { key: cpKey, sign: key };
-        this.decryptCredentials = { key: secretKey, sign: cpKey };
+        this._encryptCredentials = { key: cpKey, sign: key };
+        this._decryptCredentials = { key: secretKey, sign: cpKey };
         return this;
     }
 

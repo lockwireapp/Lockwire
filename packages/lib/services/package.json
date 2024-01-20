@@ -1,21 +1,29 @@
 {
   "name": "@lckw/lib-services",
-  "version": "0.0.1",
+  "version": "0.0.1-dev.2",
   "author": "ralzinov",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     "import": "./index.ts",
     "require": "./dist/index.js",
     "default": "./dist/index.js"
+  },
+  "files": [
+    "dist/*.*",
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "class-validator": "0.14.1",
     "firebase": "10.7.1"
   },
   "devDependencies": {
-    "@types/validator": "13.11.8"
-  },
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch"
+    "@types/validator": "13.11.8",
+    "typescript": "5.3.3"
   }
 }

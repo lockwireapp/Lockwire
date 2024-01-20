@@ -9,14 +9,14 @@ export interface ICredentials {
 
 export class MessageBox {
     static encrypt(data: Base64String, { key, sign }: ICredentials): IEncryptedMessage {
-        const box = new Box(Key.fromString(key));
-        return box.encrypt(data, Key.fromString(sign));
+        const box = new Box(Key.fromBase64String(key));
+        return box.encrypt(data, Key.fromBase64String(sign));
     }
 
     static decrypt<T>({ data, nonce }: IEncryptedMessage, { key, sign }: ICredentials): T {
-        const box = new Box(Key.fromString(key));
+        const box = new Box(Key.fromBase64String(key));
         try {
-            const messageStr = box.decrypt(data, nonce, Key.fromString(sign));
+            const messageStr = box.decrypt(data, nonce, Key.fromBase64String(sign));
             if (!messageStr) {
                 throw new Error('Failed to decrypt message');
             }
@@ -26,7 +26,7 @@ export class MessageBox {
              */
             return JSON.parse(atob(messageStr)) as T;
         } catch (e) {
-            throw new Error(`Failed to decrypt PUSH message. ${e.message}`);
+            throw new Error(`Failed to decrypt PUSH message. ${(e as Error).message}`);
         }
     }
 }

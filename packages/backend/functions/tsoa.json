@@ -3,7 +3,7 @@
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["**/*Controller.ts"],
     "spec": {
-        "outputDirectory": "./openapi",
+        "outputDirectory": "./src/openapi",
         "securityDefinitions": {
             "jwt": {
                 "type": "apiKey",
@@ -14,7 +14,7 @@
         "specVersion": 3
     },
     "routes": {
-        "routesDir": "./openapi",
+        "routesDir": "./src/openapi",
         "authenticationModule": "./src/authentication.ts"
     }
 }

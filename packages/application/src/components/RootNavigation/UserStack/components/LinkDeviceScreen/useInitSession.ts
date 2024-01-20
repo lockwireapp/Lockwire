@@ -27,8 +27,8 @@ export const useInitSession = () => {
 
         const box = new Box(keypair.secretKey);
         const payload = { type: MessageType.CONNECT };
-        const { data, nonce } = box.encrypt(objectToBase64(payload), Key.fromString(senderPublicKey));
-        const message = { to, pushToken, key: keypair.publicKey.toString(), data, nonce };
+        const { data, nonce } = box.encrypt(objectToBase64(payload), Key.fromBase64String(senderPublicKey));
+        const message = { to, pushToken, key: keypair.publicKey.toBase64String(), data, nonce };
         // TODO
         const { key, error } = { key: '', error: void 0 as any }; // await connect(message, user);
 
@@ -48,7 +48,7 @@ export const useInitSession = () => {
             id: to,
             key: senderPublicKey,
             serverSign: key,
-            secretKey: keypair.secretKey.toString(),
+            secretKey: keypair.secretKey.toBase64String(),
             meta
         });
     };

@@ -13,7 +13,10 @@ export const AUTH_SCOPES = {
 const JWT_AUTH_HEADER_NAME = 'Authorization';
 
 export class AuthenticationError extends Error {
-    constructor(public status: number) {
+    constructor(
+        public status: number,
+        public code: string | undefined,
+    ) {
         super();
     }
 }
@@ -33,18 +36,21 @@ export const expressAuthentication = (request: Request, securityName: string, sc
             if (token) {
                 const auth = getAuth();
                 try {
-                    console.log({ securityName, scopes, token });
+                    log.info(`Auth attempt`);
                     const decodedToken = await auth.verifyIdToken(token);
                     const userId = decodedToken.uid;
-                    console.log({ userId });
+                    log.info({ userId });
                     // TODO check permanent user
                     // TODO check user scope
                     res();
                 } catch (e) {
+                    const errorCode = (e as any).errorInfo?.code as string | undefined;
                     log.error(e);
+                    rej(new AuthenticationError(401, errorCode));
                 }
+            } else {
+                rej(new AuthenticationError(401, 'auth/token-missing'));
             }
-            rej(new AuthenticationError(401));
         });
     }
 

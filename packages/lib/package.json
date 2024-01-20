@@ -3,7 +3,16 @@
   "version": "0.0.1",
   "author": "ralzinov",
   "scripts": {
-    "dev": "cd ./crypto && npm run dev & cd ./models && npm run dev & cd ./services && npm run dev & cd ./utils && npm run dev",
-    "build": "cd ./crypto && npm run build & cd ./models && npm run build & cd ./services && npm run build & cd ./utils && npm run build"
+    "dev:crypto": "npm run --prefix ./crypto dev",
+    "dev:models": "npm run --prefix ./models dev",
+    "dev:services": "npm run --prefix ./services dev",
+    "dev:utils": "npm run --prefix ./utils dev",
+    "build:crypto": "npm run --prefix ./crypto build",
+    "build:models": "npm run --prefix ./models build",
+    "build:services": "npm run --prefix ./services build",
+    "build:utils": "npm run --prefix ./utils build",
+    "------------": "Main commands",
+    "dev": "conc \"npm run dev:crypto\" \"npm run dev:models\" \"npm run dev:services\" \"npm run dev:utils\"",
+    "build": "conc \"npm run build:crypto\" \"npm run build:models\" \"npm run build:services\" \"npm run build:utils\""
   }
 }

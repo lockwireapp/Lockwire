@@ -20,5 +20,8 @@
   "workspaces": [
     "packages/*",
     "packages/**/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
 }

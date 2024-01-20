@@ -22,11 +22,11 @@ export class ConnectService {
         if (receiver && !receiver.active) {
             const messaging = new MessagingService();
             const keyPair = Crypto.generateKeyPair();
-            const sender = await Participant.create({ key, pushToken, secretKey: keyPair.secretKey.toString() });
+            const sender = await Participant.create({ key, pushToken, secretKey: keyPair.secretKey.toBase64String() });
             await messaging.send(sender, receiver);
             await receiver.activate(sender.id);
             await sender.activate(receiver.id);
-            return { key: keyPair.publicKey.toString() };
+            return { key: keyPair.publicKey.toBase64String() };
         } else {
             // here some actions may be needed to prevent id search using brute force
             // the probability of guessing is near zero, but still

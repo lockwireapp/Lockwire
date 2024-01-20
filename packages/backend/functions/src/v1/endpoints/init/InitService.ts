@@ -15,13 +15,13 @@ export interface IInitResponse extends IErrorResponse {
 export class InitService {
     async init({ key, pushToken }: IInitRequest): Promise<IInitResponse> {
         const keypair = Crypto.generateKeyPair();
-        const participant = await Participant.create({ key, pushToken, secretKey: keypair.secretKey.toString() });
+        const participant = await Participant.create({ key, pushToken, secretKey: keypair.secretKey.toBase64String() });
 
         // TODO set csrf cookie
 
         return {
             id: participant.id,
-            key: keypair.publicKey.toString(),
+            key: keypair.publicKey.toBase64String(),
         };
     }
 }

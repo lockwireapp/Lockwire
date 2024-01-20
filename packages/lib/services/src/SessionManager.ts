@@ -10,27 +10,34 @@ export interface ISession {
     serverSign: string;
 }
 
-class Session implements ISession {
+abstract class Session implements ISession {
     @IsString()
-    id: string;
+    abstract id: string;
 
     @IsString()
-    cpId: string;
+    abstract cpId: string;
 
     @IsString()
-    cpKey: string;
+    abstract cpKey: string;
 
     @IsString()
-    serverSign: string;
+    abstract serverSign: string;
 
     @IsString()
-    key: string;
+    abstract key: string;
 
     @IsString()
-    secretKey: string;
+    abstract secretKey: string;
 }
 
 class SessionDTO extends Session {
+    id: string;
+    cpId: string;
+    cpKey: string;
+    serverSign: string;
+    key: string;
+    secretKey: string;
+
     constructor(value: ISession) {
         super();
         this.id = value.id;

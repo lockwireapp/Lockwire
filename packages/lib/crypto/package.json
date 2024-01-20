@@ -1,21 +1,29 @@
 {
   "name": "@lckw/lib-crypto",
-  "version": "0.0.1",
+  "version": "0.0.1-dev.7",
   "author": "ralzinov",
-  "dependencies": {
-    "tweetnacl": "1.0.3",
-    "abab": "2.0.6"
-  },
-  "devDependencies": {
-    "typescript": "5.3.3"
-  },
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     "import": "./index.ts",
     "require": "./dist/index.js",
     "default": "./dist/index.js"
   },
+  "files": [
+    "dist/*.*",
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "tweetnacl": "1.0.3",
+    "abab": "2.0.6",
+    "@lckw/lib-utils": "~0.0.1-dev.2"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
   }
 }

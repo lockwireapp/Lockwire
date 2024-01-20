@@ -1,23 +1,22 @@
 {
     "version": "0.0.1",
     "name": "@lckw/backend",
-    "main": "lib/src/index.js",
+    "main": "lib/index.js",
     "scripts": {
         "lint": "prettier --write \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
         "lint:ci": "prettier -c \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --ext .js,.jsx,.ts,.tsx ./src",
         "generate:swagger": "npx tsoa spec-and-routes",
-        "generate:types": "npx openapi-typescript ./openapi/swagger.json --output ./openapi/index.ts",
+        "generate:types": "npx openapi-typescript ./src/openapi/swagger.json --output ./src/openapi/index.ts",
         "generate:openapi": "npm run generate:swagger && npm run generate:types",
         "generate:openapi:watch": "nodemon -x npm run generate:openapi",
         "build": "npm run generate:openapi && tsc",
         "build:watch": "tsc --watch",
         "emulators:db:kill": "kill $(lsof -t -i:9000)",
         "emulators": "firebase emulators:start --import=./emulator-data --export-on-exit",
-        "watchers": "npm run generate:openapi:watch & npm run build:watch",
-        "dev": "npm run watchers & npm run emulators",
+        "watchers": "conc \"npm run generate:openapi:watch\" \"npm run build:watch\"",
         "shell": "npm run build && firebase functions:shell",
-        "deploy:functions": "firebase deploy --only functions",
-        "deploy:hosting": "firebase deploy --only hosting"
+        "deploy": "firebase deploy --only functions",
+        "dev": "conc \"npm run watchers\" \"npm run emulators\""
     },
     "engines": {
         "node": "18"
@@ -26,12 +25,14 @@
         "uuid": "9.0.1",
         "express": "4.18.2",
         "firebase": "10.7.1",
-        "firebase-admin": "12.0.0",
+        "firebase-admin": "11.11.1",
         "firebase-functions": "4.6.0",
         "firebase-tools": "13.0.3",
         "lodash": "4.17.21",
         "tsoa": "5.1.1",
         "@tsoa/runtime": "5.0.0",
+        "@lckw/lib-crypto": "~0.0.1-dev.6",
+        "@lckw/lib-models": "~0.0.1-dev.2",
         "openapi-typescript": "6.7.3"
     },
     "devDependencies": {

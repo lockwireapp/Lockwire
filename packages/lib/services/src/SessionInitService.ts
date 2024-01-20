@@ -43,8 +43,8 @@ export class SessionInitService {
 
     private async sessionInitAttempt({ pushToken, onSessionIdChange }: IInitSessionProps): Promise<ISession> {
         const { id, keypair, serverSign } = await this.createSession(pushToken);
-        const pubKey = keypair.publicKey.toString();
-        const secretKey = keypair.secretKey.toString();
+        const pubKey = keypair.publicKey.toBase64String();
+        const secretKey = keypair.secretKey.toBase64String();
         await onSessionIdChange(id, pubKey);
 
         const counterparty = await this.onSessionActive({ key: secretKey, sign: serverSign });
@@ -62,7 +62,7 @@ export class SessionInitService {
         const auth = getAuth();
         await signInAnonymously(auth);
         const keypair = Crypto.generateKeyPair();
-        const pubKey = keypair.publicKey.toString();
+        const pubKey = keypair.publicKey.toBase64String();
         const response = await this.api.init({ pushToken, key: pubKey }, auth);
         const id = response.id;
         const serverSign = response.key;

@@ -7,15 +7,27 @@ export type IListener = (message: IMessage) => void;
 
 export abstract class MessagingService {
     protected listeners: (IListener | null)[] = [];
+    private _session: ISession | undefined = void 0;
+
+    private get session(): ISession {
+        if (!this._session) {
+            throw new Error('MessagingService has not been initialized with session');
+        }
+        return this._session;
+    }
 
     constructor(
         protected api: BaseAPIProvider,
         protected auth: IAuth,
-        private serverId: string,
-        private session: ISession,
-    ) {}
+        private serverId: string
+    ) {
+    }
 
     protected abstract ack(messageId: string): Promise<void>;
+
+    initSession(session: ISession): void {
+        this._session = session;
+    }
 
     addListener(fn: IListener): number {
         return this.listeners.push(fn);
@@ -30,9 +42,9 @@ export abstract class MessagingService {
             {
                 to: this.session.cpId,
                 from: this.session.id,
-                ...messageData,
+                ...messageData
             },
-            this.auth,
+            this.auth
         );
     }
 
@@ -41,7 +53,7 @@ export abstract class MessagingService {
         if (message.from === this.serverId && this.isMessage(data)) {
             const dataDecrypted = MessageBox.decrypt(data, {
                 key: this.session.secretKey,
-                sign: this.session.cpKey,
+                sign: this.session.cpKey
             });
             const messageData = MessageDTO.create(dataDecrypted);
             this.listeners.forEach((fn) => fn && fn(messageData));
