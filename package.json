@@ -7,7 +7,7 @@
     "url": "git+https://github.com/lockwireapp/Lockwire.git"
   },
   "scripts": {
-    "init": "pnpm ci && npm run firebase:auth",
+    "init": "yarn && npm run firebase:auth",
     "firebase:auth": "cd packages/backend && firebase login",
     "backend:dev": "cd packages/backend/functions && npm run dev",
     "browser:dev": "cd packages/browser && npm run dev",
@@ -20,9 +20,5 @@
   "workspaces": [
     "packages/*",
     "packages/**/*"
-  ],
-  "devDependencies": {
-    "@types/react": "18.2.25",
-    "@types/react-dom": "18.2.11"
-  }
+  ]
 }

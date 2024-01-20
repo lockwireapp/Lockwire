@@ -1,22 +1,20 @@
 {
-  "entryFile": "./src/index.ts",
-  "noImplicitAdditionalProperties": "throw-on-extras",
-  "controllerPathGlobs": [
-    "**/*Controller.ts"
-  ],
-  "spec": {
-    "outputDirectory": "./openapi",
-    "securityDefinitions": {
-      "jwt": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
-      }
+    "entryFile": "./src/index.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "controllerPathGlobs": ["**/*Controller.ts"],
+    "spec": {
+        "outputDirectory": "./openapi",
+        "securityDefinitions": {
+            "jwt": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "specVersion": 3
     },
-    "specVersion": 3
-  },
-  "routes": {
-    "routesDir": "./openapi",
-    "authenticationModule": "./src/authentication.ts"
-  }
+    "routes": {
+        "routesDir": "./openapi",
+        "authenticationModule": "./src/authentication.ts"
+    }
 }
