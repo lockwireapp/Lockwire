@@ -1,66 +1,26 @@
 {
   "project_info": {
-    "project_number": "179765884901",
-    "firebase_url": "https://pm-backend-75c97-default-rtdb.firebaseio.com",
-    "project_id": "pm-backend-75c97",
-    "storage_bucket": "pm-backend-75c97.appspot.com"
+    "project_number": "356695135711",
+    "project_id": "lockwire-9561c",
+    "storage_bucket": "lockwire-9561c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:179765884901:android:448350aeccabdd7a34210c",
+        "mobilesdk_app_id": "1:356695135711:android:741ab0266122d89257606a",
         "android_client_info": {
-          "package_name": "locwire.app"
+          "package_name": "com.lockwire.app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "179765884901-4uighjff6bhl341at23bhnjbv6p46v83.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBJxduCpmOOmydk5NWZizIeFXt5y9AvNxE"
+          "current_key": "AIzaSyCEKHE4mACt5ysY6nMNjIjlX62TCR8z8rI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "179765884901-4uighjff6bhl341at23bhnjbv6p46v83.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:179765884901:android:3a009a7246beaa7434210c",
-        "android_client_info": {
-          "package_name": "pm.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "179765884901-4uighjff6bhl341at23bhnjbv6p46v83.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBJxduCpmOOmydk5NWZizIeFXt5y9AvNxE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "179765884901-4uighjff6bhl341at23bhnjbv6p46v83.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
