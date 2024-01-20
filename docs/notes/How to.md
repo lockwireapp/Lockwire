@@ -6,6 +6,7 @@
    ```
    PLASMO_CRX_ID=lcammplmplolhkbmdijpfodeflpldbaa
    PLASMO_PUBLIC_SERVER_URL=http://127.0.0.1:5001/lockwire-9561c/us-central1
+   PLASMO_FIREBASE_API_KEY=<lockwire-9561c api key>
    ```
 5. Install EAS CLI `npm install -g eas-cli` then login with EAS build account credentials
 6. Install docker
