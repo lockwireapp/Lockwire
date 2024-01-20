@@ -15,4 +15,4 @@ jobs:
           entrypoint: packages/backend
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PM_BACKEND_75C97 }}'
-          projectId: pm-backend-75c97
+          projectId: lockwire-9561c

@@ -5,13 +5,7 @@
 5. Create `packages/browser/.env` with contents:
    ```
    PLASMO_CRX_ID=lcammplmplolhkbmdijpfodeflpldbaa
-   PLASMO_PUBLIC_SERVER_URL=http://127.0.0.1:5001/pm-backend-75c97/us-central1
-   PLASMO_PUBLIC_FIREBASE_PUBLIC_API_KEY=AIzaSyCTQT-JaTjAvc7b2pnfamSXeUhhcRMbRA8
-   PLASMO_PUBLIC_FIREBASE_AUTH_DOMAIN=pm-backend-75c97.firebaseapp.com
-   PLASMO_PUBLIC_FIREBASE_PROJECT_ID=pm-backend-75c97
-   PLASMO_PUBLIC_FIREBASE_STORAGE_BUCKET=pm-backend-75c97.appspot.com
-   PLASMO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=179765884901
-   PLASMO_PUBLIC_FIREBASE_APP_ID=1:179765884901:web:3d6de6f1b694272334210c
+   PLASMO_PUBLIC_SERVER_URL=http://127.0.0.1:5001/lockwire-9561c/us-central1
    ```
 5. Install EAS CLI `npm install -g eas-cli` then login with EAS build account credentials
 6. Install docker
