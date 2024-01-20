@@ -5,7 +5,7 @@ export const FIREBASE_AUTH_EMULATOR_URL = 'http://127.0.0.1:9099';
 export const FIREBASE_CONFIG = {
     projectId: 'lockwire-9561c',
     messagingSenderId: '356695135711',
-    apiKey: 'AIzaSyDKMnfcrDTnV_WcSXYPoC2OZztsUW9xkpY',
+    apiKey: process.env.PLASMO_FIREBASE_API_KEY,
     appId: '1:356695135711:web:4aafb6154b3e2c0057606a',
     authDomain: 'lockwire-9561c.firebaseapp.com',
     storageBucket: 'lockwire-9561c.appspot.com',
