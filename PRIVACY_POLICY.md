@@ -41,9 +41,6 @@ is maintained securely, with confidentiality obligations, and only when there is
 information. Additionally, we do not receive or store any billing data when payments are made for a Lockwire
 subscription through the Google Play or Apple App Store.
 
-#### Email aliases
-WIP
-
 #### Third-Party Sources.
 Users may enable the email aliasing feature. With this feature, we offer user a unique email address for sign-up
 purposes on third-party sites or services. If these third-party sites or services send emails, such as confirmation
@@ -62,8 +59,15 @@ security measures. Our services are designed with a core principle of ensuring u
 We also don't want your personal information for any longer than we need it, so we only keep it long enough to do what
 we collected it for. Once we don't need it, we take steps to destroy it unless we are required by law to keep it longer.
 
+## What do we do with your information once we have it?
+When you give us information, we will use it in the ways for which you've given us permission. Generally, we use your 
+information to help us provide and improve our products and services for you.
+
 ## When do we share your information with others?
-We are not sharing your personal data with anyone
+With third-party service providers (such as IT and security service vendors, website hosting facilities, and email 
+distribution services), contractors, and other third-parties we use to support our business. Such third-parties operate 
+under appropriate confidentiality and data privacy obligations (only for the purposes identified in Section 
+"What do we do with your information once we have it");
 
 ## What if we change this privacy policy or any of our privacy notices?
 We may need to change this policy and our notices. The updates will be posted online. If the changes are substantive,
