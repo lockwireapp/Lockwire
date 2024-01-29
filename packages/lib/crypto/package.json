@@ -21,7 +21,7 @@
   "dependencies": {
     "tweetnacl": "1.0.3",
     "abab": "2.0.6",
-    "@lckw/lib-utils": "~0.0.1-dev.2"
+    "@lckw/lib-utils": "~0.0.1-dev"
   },
   "devDependencies": {
     "typescript": "5.3.3"

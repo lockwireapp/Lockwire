@@ -31,8 +31,8 @@
         "lodash": "4.17.21",
         "tsoa": "5.1.1",
         "@tsoa/runtime": "5.0.0",
-        "@lckw/lib-crypto": "~0.0.1-dev.6",
-        "@lckw/lib-models": "~0.0.1-dev.2",
+        "@lckw/lib-crypto": "~0.0.1-dev",
+        "@lckw/lib-models": "~0.0.1-dev",
         "openapi-typescript": "6.7.3"
     },
     "devDependencies": {
