@@ -25,15 +25,18 @@ export interface IMessageData {
     value: IMessageDataValue;
 }
 
-export class MessageData implements IMessageData {
+export abstract class MessageData implements IMessageData {
     @IsEnum(MessageType)
-    type: MessageType;
+    abstract type: MessageType;
 
     @IsObject()
-    value: IMessageDataValue; // TODO add types derived from on type
+    abstract value: IMessageDataValue; // TODO add types derived from on type
 }
 
 export class MessageDataDTO extends MessageData {
+    type: MessageType;
+    value: IMessageDataValue;
+
     constructor(props: IMessageData) {
         super();
         this.type = props.type;

@@ -13,7 +13,8 @@ export const errorHandler = (err: unknown, req: Request, res: Response, next: Ne
 
     if (err instanceof AuthenticationError) {
         return res.status(err.status).json({
-            message: 'Unauthorized',
+            message: `Unauthorized`,
+            code: err.code,
         });
     }
 

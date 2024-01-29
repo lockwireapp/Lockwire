@@ -13,24 +13,30 @@ export interface IMessage extends IEncryptedMessage {
     key?: Base64String;
 }
 
-export class Message implements IMessage {
+export abstract class Message implements IMessage {
     @IsString()
-    id: string;
+    abstract id: string;
 
     @IsString()
-    from: string;
+    abstract from: string;
 
     @IsString()
-    key: Base64String | undefined;
+    abstract key: Base64String | undefined;
 
     @IsString()
-    data: Base64String;
+    abstract data: Base64String;
 
     @IsString()
-    nonce: string;
+    abstract nonce: string;
 }
 
 export class MessageDTO extends Message {
+    id: string;
+    from: string;
+    key: Base64String | undefined;
+    data: Base64String;
+    nonce: string;
+
     constructor(props: IMessage) {
         super();
         this.id = props.id;

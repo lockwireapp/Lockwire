@@ -1,10 +1,13 @@
 {
   "exclude": [
+    "dist",
     "**/node_modules"
   ],
   "include": ["./**/*.ts"],
   "compilerOptions": {
+    "strict": true,
     "outDir": "./dist",
+    "declaration": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,

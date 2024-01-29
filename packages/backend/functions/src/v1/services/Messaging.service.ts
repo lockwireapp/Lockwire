@@ -56,8 +56,8 @@ export class MessagingService {
             nonce,
         });
 
-        const box = new Box(Key.fromString(recipient.secretKey));
-        const messageBox = box.encrypt(message.toBase64(), Key.fromString(recipient.key));
+        const box = new Box(Key.fromBase64String(recipient.secretKey));
+        const messageBox = box.encrypt(message.toBase64(), Key.fromBase64String(recipient.key));
         const fcmMessageId = await getMessaging().send({
             ...fcmMessageConfig,
             token: recipient.pushToken,

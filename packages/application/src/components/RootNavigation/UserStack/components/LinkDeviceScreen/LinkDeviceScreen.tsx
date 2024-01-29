@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { ImpactFeedbackStyle } from 'expo-haptics';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator } from 'react-native-paper';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { IUserStackScreenComponent, UserNavigation, useUserNavigation } from '../../hooks/useUserNavigation';
@@ -35,8 +35,8 @@ export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEV
     const [scannedId, setScannedId] = useState<string>();
     const [isLoading, setLoading] = useState(false);
 
-    const handleQrCodeScanned = useCallback(
-        throttle(async (event: BarCodeEvent) => {
+    const throttled = useMemo(() => {
+        return throttle(async (event: BarCodeEvent) => {
             try {
                 const qrCode = QRCodeData.parse(event.data || '');
                 if (qrCode.isValid() && scannedId !== qrCode.id) {
@@ -53,12 +53,11 @@ export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEV
                 setScannedId(void 0);
                 navigation.navigate(UserNavigation.DEVICES_LIST, {});
                 snackbar.show({ text: `${t`Failed to link device`}. ${e}` });
-
-                // TODO implement floating badge which displays only when incorrect qr code is visible
             }
-        }, 500),
-        [scannedId],
-    );
+        }, 500);
+    }, [initSession, navigation, scannedId, snackbar, t]);
+
+    const handleQrCodeScanned = useCallback(throttled, [throttled]);
 
     return (
         <CameraPermissions>

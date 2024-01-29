@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "ralzinov",
   "dependencies": {
-    "@lckw/lib-services": "0.0.1"
+    "@lckw/lib-services": "~0.0.1-dev"
   },
   "devDependencies": {
     "typescript": "5.3.3"

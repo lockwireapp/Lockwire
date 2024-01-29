@@ -3,9 +3,11 @@
     "exclude": ["node_modules"],
     "include": [".plasmo/index.d.ts", "./**/*.ts", "./**/*.tsx"],
     "compilerOptions": {
+        "strict": true,
         "paths": {
             "~*": ["./*"]
         },
+        "skipLibCheck": true,
         "strictNullChecks": true,
         "experimentalDecorators": true,
         "noImplicitAny": true,

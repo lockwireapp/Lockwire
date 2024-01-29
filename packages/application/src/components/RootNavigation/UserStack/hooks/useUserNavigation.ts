@@ -25,6 +25,4 @@ export const useUserNavigation = () => {
 
 export const User = createStackNavigator<IUserStackParamList>();
 
-export type IUserStackScreenComponent<T extends UserNavigation> = React.FC<
-    StackScreenProps<IUserStackParamList, T>
->;
+export type IUserStackScreenComponent<T extends UserNavigation> = React.FC<StackScreenProps<IUserStackParamList, T>>;

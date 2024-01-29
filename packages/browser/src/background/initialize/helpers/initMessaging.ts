@@ -22,7 +22,7 @@ const createPipe = async (pipe: Pipe, port: chrome.runtime.Port) => {
         });
     } catch (e) {
         console.error(e);
-        const message = `Failed to init session. Error: "${e?.message || e || 'unhandled'}"`;
+        const message = `Failed to init session. Error: "${(e as Error)?.message || e || 'unhandled'}"`;
         port.postMessage(new QrCodeGetFail({ message }));
     }
 };

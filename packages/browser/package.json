@@ -6,8 +6,8 @@
         "dev": "plasmo dev --verbose",
         "lint": "prettier --write \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
         "lint:ci": "prettier -c \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --ext .js,.jsx,.ts,.tsx ./src",
-        "build": "plasmo build",
-        "package": "plasmo package"
+        "build:prod": "plasmo build --target .env.prod",
+        "package": "npm run build:prod && plasmo package"
     },
     "dependencies": {
         "clsx": "2.1.0",
@@ -15,9 +15,13 @@
         "plasmo": "0.83.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-qrcode-logo": "2.9.0"
+        "react-qrcode-logo": "2.9.0",
+        "@lckw/lib-utils": "~0.0.1-dev",
+        "@lckw/lib-models": "~0.0.1-dev",
+        "@lckw/lib-services": "~0.0.1-dev"
     },
     "devDependencies": {
+        "@types/react": "18.2.48",
         "@types/chrome": "0.0.246",
         "@types/node": "20.11.5",
         "@typescript-eslint/eslint-plugin": "6.7.4",
@@ -32,7 +36,8 @@
         "typescript": "5.3.3"
     },
     "manifest": {
-        "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvVgs5B8Y0BpDrEA74FyMg90GQfIUiYn3nLzGoPnSP8VFfaJe4nEkQh/UOWVxLaWLz5GA049MDt3Yn553kWVkOLT/HgdchVsmkXYE5hFkw6b41QiSdB4Q8b8gOsFU5b3SuJwE1usIFMLSXPviM23bkJSQox+9jGJTYDcR+IxPNvIoxNx4X+NxBwH27H6aP+HxbYlcvD7VHiyuBHB5xanMCBcftCPDGTdzBX7VkODbmdEgI0Dr1d+9C3lyzxN635eVmxeafTJxRFTq1m3jGRVt392h1zlmKIyyDD3ZUxxk9M4c++Ot89QudOe8ED1rn9w+653EZYekYyuicmASsnBhGwIDAQAB",
+        "name": "Lockwire",
+        "key": "$PLASMO_CRX_CRX_PUBLIC_KEY",
         "permissions": [
             "gcm",
             "storage",
@@ -40,8 +45,7 @@
             "scripting"
         ],
         "host_permissions": [
-            "http://127.0.0.1:5001/*",
-            "https://*/*"
+            "$PLASMO_PUBLIC_SERVER_URL/*"
         ]
     },
     "private": true
