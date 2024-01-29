@@ -41,7 +41,7 @@ export const useInitSession = () => {
             name: 'TODO',
             device: SessionDevice.GOOGLE_CHROME,
             platform: SessionDevicePlatform.ANDROID,
-            description: 'TODO'
+            description: 'TODO',
         };
 
         await storage.set({
@@ -49,7 +49,7 @@ export const useInitSession = () => {
             key: senderPublicKey,
             serverSign: key,
             secretKey: keypair.secretKey.toBase64String(),
-            meta
+            meta,
         });
     };
 };
