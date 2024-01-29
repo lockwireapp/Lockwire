@@ -7,20 +7,23 @@ import { I18nProvider } from './i18n';
 import { AppConfig } from './AppConfig';
 import { SnackbarProvider } from './components/Snackbar';
 import { ConfirmDialog } from './components/RootNavigation/common/ConfirmDialog';
+import { AuthProvider } from './auth/useAuth';
 
 Crypto.setPRNG(getRandomValues);
 
-const App = () => {
+const App: React.FC = () => {
     return (
         <PaperProvider>
             <I18nProvider>
-                <AppConfig>
-                    <ConfirmDialog>
-                        <SnackbarProvider>
-                            <RootNavigation />
-                        </SnackbarProvider>
-                    </ConfirmDialog>
-                </AppConfig>
+                <AuthProvider>
+                    <AppConfig>
+                        <ConfirmDialog>
+                            <SnackbarProvider>
+                                <RootNavigation />
+                            </SnackbarProvider>
+                        </ConfirmDialog>
+                    </AppConfig>
+                </AuthProvider>
             </I18nProvider>
         </PaperProvider>
     );

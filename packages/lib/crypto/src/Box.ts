@@ -11,7 +11,7 @@ import { Key } from './Key';
 export class Box {
     constructor(private secretKey: Key) {}
 
-    encrypt(data: Base64String, signKey: Key): { data: Base64String; nonce: string } {
+    encrypt(data: Base64String, signKey: Key): { data: Base64String; nonce: Base64String } {
         const nonce = nacl.randomBytes(nacl.box.nonceLength);
         const box = nacl.box(base64ToUint8Array(data), nonce, signKey.value, this.secretKey.value);
         return {
@@ -20,7 +20,7 @@ export class Box {
         };
     }
 
-    decrypt(data: Base64String, nonce: string, signKey: Key): Base64String | null {
+    decrypt(data: Base64String, nonce: Base64String, signKey: Key): Base64String | null {
         const message = nacl.box.open(
             base64ToUint8Array(data),
             base64ToUint8Array(nonce),

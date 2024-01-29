@@ -9,7 +9,7 @@ export class GCMMessagingService extends MessagingService {
                 try {
                     await this.emitEvent({ data, from });
                 } catch (e) {
-                    throw new Error(`Failed to process GCM message from ${from}`);
+                    throw new Error(`Failed to process GCM message from ${from}. ${e}`);
                 }
             } else {
                 console.warn('Ignored GCM message from unknown sender');

@@ -20,9 +20,9 @@ export abstract class BaseAPIProvider {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${idToken || ''}`,
-                    'Content-Type': 'application/json; charset=utf-8'
+                    'Content-Type': 'application/json; charset=utf-8',
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             })
                 .then(async (response) => {
                     if (response.status !== 200) {
@@ -34,7 +34,7 @@ export abstract class BaseAPIProvider {
 
                     const contentType = response.headers.get('Content-Type') || '';
                     if (!contentType.includes('application/json')) {
-                        throw new Error('Failed to parse response. Content type is not JSON')
+                        throw new Error('Failed to parse response. Content type is not JSON');
                     }
                     return response.json();
                 })

@@ -7,7 +7,7 @@ export const base64ToUint8Array = (value: string) => {
         throw new Error(
             `Failed to convert string to bytes. Reason: ${
                 !isBase64(value) ? 'passed string is not base64 encoded' : 'unknown'
-            }`
+            }`,
         );
     }
     const len = binaryString.length;

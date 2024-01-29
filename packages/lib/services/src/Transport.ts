@@ -6,9 +6,9 @@ import { MessagingService } from './MessagingService';
 import { BaseAPIProvider } from './BaseAPIProvider';
 import { BaseAuthService } from './BaseAuthService';
 
-export type IPipeMessageHandler = (data: IMessageData, pipe: Pipe) => Promise<void>;
+export type ITransportMessageHandler = (data: IMessageData, transport: Transport) => Promise<void>;
 
-export abstract class Pipe {
+export abstract class Transport {
     protected abstract auth: BaseAuthService;
     protected abstract api: BaseAPIProvider;
     protected abstract messaging: MessagingService;
@@ -16,7 +16,7 @@ export abstract class Pipe {
     private _encryptCredentials: ICredentials | undefined = void 0;
     private get encryptCredentials(): ICredentials {
         if (!this._encryptCredentials) {
-            throw new Error('Pipe missing encrypt credentials. Please call init before use');
+            throw new Error('Transport missing encrypt credentials. Please call init before use');
         }
         return this._encryptCredentials;
     }
@@ -24,13 +24,12 @@ export abstract class Pipe {
     private _decryptCredentials: ICredentials | undefined = void 0;
     private get decryptCredentials(): ICredentials {
         if (!this._decryptCredentials) {
-            throw new Error('Pipe missing decrypt credentials. Please call init before use');
+            throw new Error('Transport missing decrypt credentials. Please call init before use');
         }
         return this._decryptCredentials;
-    };
-
-    constructor(protected handlers: Record<MessageType, IPipeMessageHandler>) {
     }
+
+    protected constructor(protected handlers: Record<MessageType, ITransportMessageHandler>) {}
 
     async create(props: IInitSessionProps): Promise<void> {
         const service = new SessionInitService(this.api, this.auth, this.messaging);
@@ -49,7 +48,9 @@ export abstract class Pipe {
         await this.messaging.send(messageDataEncrypted);
     }
 
-    init({ secretKey, key, cpKey }: ISession): Pipe {
+    init(session: ISession): Transport {
+        const { secretKey, key, cpKey } = session;
+        this.messaging.initSession(session);
         this.subscribeMessageHandlers();
         this._encryptCredentials = { key: cpKey, sign: key };
         this._decryptCredentials = { key: secretKey, sign: cpKey };

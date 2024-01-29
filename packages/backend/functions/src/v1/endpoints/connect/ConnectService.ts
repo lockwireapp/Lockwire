@@ -16,14 +16,14 @@ export interface IConnectResponse extends IErrorResponse {
 }
 
 export class ConnectService {
-    async connect({ to, key, pushToken }: IConnectRequest): Promise<IConnectResponse> {
+    async connect({ to, key, pushToken, data, nonce }: IConnectRequest): Promise<IConnectResponse> {
         const receiver = await Participant.get(to);
 
         if (receiver && !receiver.active) {
             const messaging = new MessagingService();
             const keyPair = Crypto.generateKeyPair();
             const sender = await Participant.create({ key, pushToken, secretKey: keyPair.secretKey.toBase64String() });
-            await messaging.send(sender, receiver);
+            await messaging.send(sender, receiver, data, nonce);
             await receiver.activate(sender.id);
             await sender.activate(receiver.id);
             return { key: keyPair.publicKey.toBase64String() };

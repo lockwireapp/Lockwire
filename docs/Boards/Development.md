@@ -4,42 +4,59 @@ kanban-plugin: basic
 
 ---
 
-## Business
+## Common
 
-- [ ] Documentation<br><br>- Describe protocol<br>- Copy schematics images to repo
-- [ ] Landing
+- [ ] License
 - [ ] Patreon
-- [ ] Product description
-
-
-## Product
-
+- [ ] Landing
+- [ ] Documentation #Documentation <br><br>- Describe protocol<br>- Copy schematics images to repo<br>- Product description
 - [ ] Deployment actions #CI<br><br>- Deploy functions<br>- Deploy hosting<br>- Deploy application<br>- Deploy browser<br>- Deploy lib to NPM<br><br>[Progress bar with ORA](https://www.google.com/url?q=https://www.npmjs.com/package/ora&sa=D&source=editors&ust=1706530099466256&usg=AOvVaw0xxqa99Lu0ogMzrOev20eM) ^r15ico
 - [ ] Automatic versioning #CI
 - [ ] Address TODOs in code #Common
-- [ ] Verify tokens #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)
-- [ ] Detect token revocation #Auth<br><br>[Detect ID token revocation](https://firebase.google.com/docs/auth/admin/manage-sessions#detect_id_token_revocation)
-- [ ] Set up CORS for functions to allow calls from known apps only #Auth
-- [ ] Implement key rotation #Transport
-- [ ] Write tests #Transport
-- [ ] Improve error handling #Browser
-- [ ] Pass store review #Browser
+
+
+## Browser
+
+- [ ] Forbid unused auth actions #Browser  #Auth
+- [ ] Introduce DI #Browser
+- [ ] Redesign popup #Browser<br>- Include description
+- [ ] Pass chrome store review #Browser
 - [ ] Remove firebase, auth manually #Browser<br><br>[Firebase REST API](https://firebase.google.com/docs/reference/rest/auth#section-sign-in-anonymously)
-- [ ] Login autofill #Browser
 - [ ] Semi / automatic registration #Browser
-- [ ] Internationalization #Browser
-- [ ] Retry qr code, error handling #Browser
+- [ ] QR code retry button #Browser
 - [ ] Implement incognito session mode #Browser
-- [ ] Use separate key for PUSH encryption #Backend
+- [ ] Internationalization #Browser
+- [ ] Login autofill #Browser
+- [ ] Detect token revocation #Browser  #Auth<br><br>[Detect ID token revocation](https://firebase.google.com/docs/auth/admin/manage-sessions#detect_id_token_revocation)
+- [ ] Verify tokens #Browser  #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)
+- [ ] Improve error handling #Browser
+
+
+## Application
+
+- [ ] Forbid unused auth actions #App  #Auth
+- [ ] Verify tokens #App   #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)
+- [ ] Detect token revocation #App   #Auth<br><br>[Detect ID token revocation](https://firebase.google.com/docs/auth/admin/manage-sessions#detect_id_token_revocation)
+- [ ] Implement vault adapter for andoid #App<br>[Kotpass](https://github.com/keemobile/kotpass)
+- [ ] Persist devices in vault instead of expo-secure-store #App
+- [ ] Registration screen #App
+- [ ] Show error popup over QR scan #App
+- [ ] Error mode in snackbar #App
+- [ ] Semi / automatic registration #App
+- [ ] Lazy load translations #App
+- [ ] Language switch support #App
+- [ ] App for IOS #App
+- [ ] Implement vault adapter for IOS #App
+
+
+## Backend
+
+- [ ] Write tests #Transport
+- [ ] Implement key rotation #Transport
+- [ ] Use separate key for PUSH encryption #Transport
 - [ ] Extract routes from swagger or metadata #Backend
 - [ ] Implement CSRF protection #Backend
-- [ ] App #App #Android
-- [ ] App #App  #IOS
-- [ ] Semi / automatic registration #App
-- [ ] Persist devices in vault instead of expo-secure-store #App
-- [ ] Vault adapter #App
-- [ ] Language switch support #App
-- [ ] Lazy load translations #App
+- [ ] Set up CORS for functions to allow calls from known apps only #Backend #Auth
 
 
 ## In progress

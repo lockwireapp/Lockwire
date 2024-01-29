@@ -7,7 +7,6 @@ import { LinkDeviceScreen } from './components/LinkDeviceScreen';
 import { User, UserNavigation } from './hooks/useUserNavigation';
 import { useTranslations } from '../../../i18n';
 import { BackIcon } from '../common/BackIcon';
-import { ConfirmDialog } from '../common/ConfirmDialog';
 
 export const UserStack: React.FC = () => {
     const t = useTranslations();

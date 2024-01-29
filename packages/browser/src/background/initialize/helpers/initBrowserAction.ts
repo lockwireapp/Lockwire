@@ -8,8 +8,10 @@ const handleActionClick = (tab: chrome.tabs.Tab) => {
 
 export const initBrowserAction = async () => {
     const popup = new PopupController();
+    const hasSession = await SessionManager.isSet();
+    const isPopupEnabled = await popup.isEnabled();
 
-    if ((await SessionManager.isSet()) && (await popup.isEnabled())) {
+    if (hasSession && isPopupEnabled) {
         await popup.disable();
     }
 

@@ -1,12 +1,33 @@
-import React from 'react';
-import { useAuthentication } from '../../auth/useAuthentication';
+import { AuthEvent } from '@lckw/lib-services';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../auth/useAuth';
 import { AuthStack } from './AuthStack';
 import { UserStack } from './UserStack';
 
 interface IRootNavigationProps {}
 
-export const RootNavigation: React.FC<IRootNavigationProps> = () => {
-    const { user } = useAuthentication();
+const useAuthState = () => {
+    const auth = useAuth();
+    const [signedIn, setSignedIn] = useState(auth.isAuthenticated());
 
-    return user ? <UserStack /> : <AuthStack />;
+    useEffect(() => {
+        const subscriberIndex = auth.addEventListener((type) => {
+            if (type === AuthEvent.SIGN_IN) {
+                setSignedIn(true);
+            } else if (type === AuthEvent.SIGN_OUT) {
+                setSignedIn(false);
+            }
+        });
+
+        return () => auth.removeEventListener(subscriberIndex);
+    }, [auth, signedIn]);
+
+    return signedIn;
+};
+
+export const RootNavigation: React.FC<IRootNavigationProps> = () => {
+    const auth = useAuth();
+    const signedIn = useAuthState();
+
+    return signedIn ? <UserStack /> : <AuthStack />;
 };

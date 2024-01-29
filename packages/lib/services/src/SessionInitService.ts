@@ -1,6 +1,6 @@
 import { Base64String } from '@lckw/lib-utils';
 import { Crypto, Keypair } from '@lckw/lib-crypto';
-import { MessageDataDTO, MessageDTO, MessageType } from '@lckw/lib-models';
+import { MessageDataDTO, MessageType } from '@lckw/lib-models';
 import { ISession, SessionManager } from './SessionManager';
 import { ICredentials, MessageBox } from './MessageBox';
 import { MessagingService } from './MessagingService';
@@ -46,6 +46,15 @@ export class SessionInitService {
         const secretKey = keypair.secretKey.toBase64String();
         await onSessionIdChange(id, pubKey);
 
+        this.messaging.initSession({
+            id,
+            key: pubKey,
+            secretKey: secretKey,
+            cpId: String(null),
+            cpKey: String(null),
+            serverSign,
+        });
+
         const counterparty = await this.onSessionActive({ key: secretKey, sign: serverSign });
         return await SessionManager.createSession({
             id,
@@ -67,16 +76,16 @@ export class SessionInitService {
         return { id, keypair, serverSign };
     }
 
-    private async onSessionActive({ key, sign }: ICredentials): Promise<{ from: string; key: Base64String }> {
+    private async onSessionActive({ key }: ICredentials): Promise<{ from: string; key: Base64String }> {
         return new Promise((res, rej) => {
-            const rejectionTimeout = setTimeout(() => rej(new TimeoutError()), SESSION_CONNECT_TIMEOUT_MS);
+            const rejectionTimeout = setTimeout(
+                () => rej(new TimeoutError('Timeout error')),
+                SESSION_CONNECT_TIMEOUT_MS,
+            );
 
-            const index = this.messaging.addListener((messageEncrypted) => {
+            const index = this.messaging.addListener((message) => {
                 try {
-                    const messageDecrypted = MessageBox.decrypt(messageEncrypted, { key, sign });
-                    const message = MessageDTO.create(messageDecrypted);
-
-                    if (message.key) {
+                    if (message.key && message.data && message.nonce) {
                         const messageDataDecrypted = MessageBox.decrypt(message, { key, sign: message.key });
                         const messageData = MessageDataDTO.create(messageDataDecrypted);
                         if (messageData.type === MessageType.CONNECT) {
@@ -84,12 +93,13 @@ export class SessionInitService {
                             clearTimeout(rejectionTimeout);
                             res({ from: message.from, key: message.key });
                         } else {
-                            console.warn(`Got a message of type: "${messageData.type}" on init. Skipping`);
+                            console.warn(`Got a message without payload on init. Skipping`);
                         }
                     } else {
-                        console.warn('Got stray GCM message on init. Skipping');
+                        console.warn('Got unknown message on init. Skipping');
                     }
                 } catch (e) {
+                    this.messaging.removeListener(index);
                     clearTimeout(rejectionTimeout);
                     rej(e);
                 }

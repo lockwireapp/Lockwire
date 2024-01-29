@@ -5,5 +5,10 @@ export interface IDeviceMetadata {
     name: string;
     device: SessionDevice;
     platform: SessionDevicePlatform;
-    description?: string;
+    description: string;
+}
+
+export interface IDeviceMetadataInternal extends IDeviceMetadata {
+    creationDate: string;
+    loaded: boolean;
 }

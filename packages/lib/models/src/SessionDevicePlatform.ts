@@ -4,4 +4,5 @@ export enum SessionDevicePlatform {
     MACOS = 'MACOS',
     ANDROID = 'ANDROID',
     CROS = 'CROS',
+    UNKNOWN = 'UNKNOWN',
 }
