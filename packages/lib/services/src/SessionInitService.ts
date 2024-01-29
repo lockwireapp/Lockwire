@@ -5,9 +5,7 @@ import { ISession, SessionManager } from './SessionManager';
 import { ICredentials, MessageBox } from './MessageBox';
 import { MessagingService } from './MessagingService';
 import { BaseAPIProvider } from './BaseAPIProvider';
-
-// TODO!! remove firebase dependency
-import { getAuth, signInAnonymously } from 'firebase/auth';
+import { BaseAuthService } from './BaseAuthService';
 
 export interface IInitSessionProps {
     pushToken: string;
@@ -22,6 +20,7 @@ const MAX_ATTEMPTS_COUNT = 15;
 export class SessionInitService {
     constructor(
         private api: BaseAPIProvider,
+        private auth: BaseAuthService,
         private messaging: MessagingService,
     ) {}
 
@@ -59,11 +58,10 @@ export class SessionInitService {
     }
 
     private async createSession(pushToken: string): Promise<{ id: string; keypair: Keypair; serverSign: string }> {
-        const auth = getAuth();
-        await signInAnonymously(auth);
+        await this.auth.signInAnonymously();
         const keypair = Crypto.generateKeyPair();
         const pubKey = keypair.publicKey.toBase64String();
-        const response = await this.api.init({ pushToken, key: pubKey }, auth);
+        const response = await this.api.init({ pushToken, key: pubKey });
         const id = response.id;
         const serverSign = response.key;
         return { id, keypair, serverSign };

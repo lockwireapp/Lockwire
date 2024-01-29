@@ -19,6 +19,6 @@ export class GCMMessagingService extends MessagingService {
     }
 
     protected async ack(messageId: string): Promise<void> {
-        await this.api.ack({ messageId }, this.auth);
+        await this.api.ack({ messageId });
     }
 }

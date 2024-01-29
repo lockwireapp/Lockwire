@@ -14,16 +14,17 @@ kanban-plugin: basic
 
 ## Product
 
-- [ ] Deployment actions #CI<br><br>- Deploy functions<br>- Deploy hosting<br>- Deploy application<br>- Deploy browser<br>- Deploy lib to NPM ^r15ico
+- [ ] Deployment actions #CI<br><br>- Deploy functions<br>- Deploy hosting<br>- Deploy application<br>- Deploy browser<br>- Deploy lib to NPM<br><br>[Progress bar with ORA](https://www.google.com/url?q=https://www.npmjs.com/package/ora&sa=D&source=editors&ust=1706530099466256&usg=AOvVaw0xxqa99Lu0ogMzrOev20eM) ^r15ico
 - [ ] Automatic versioning #CI
 - [ ] Address TODOs in code #Common
-- [ ] Verify tokens #Auth
-- [ ] Detect token revocation #Auth
+- [ ] Verify tokens #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)
+- [ ] Detect token revocation #Auth<br><br>[Detect ID token revocation](https://firebase.google.com/docs/auth/admin/manage-sessions#detect_id_token_revocation)
 - [ ] Set up CORS for functions to allow calls from known apps only #Auth
 - [ ] Implement key rotation #Transport
 - [ ] Write tests #Transport
+- [ ] Improve error handling #Browser
 - [ ] Pass store review #Browser
-- [ ] Remove firebase, auth manually #Browser
+- [ ] Remove firebase, auth manually #Browser<br><br>[Firebase REST API](https://firebase.google.com/docs/reference/rest/auth#section-sign-in-anonymously)
 - [ ] Login autofill #Browser
 - [ ] Semi / automatic registration #Browser
 - [ ] Internationalization #Browser

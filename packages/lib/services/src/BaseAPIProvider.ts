@@ -1,32 +1,19 @@
-export interface IAuth {
-    currentUser:
-        | {
-              getIdToken: () => Promise<string>;
-          }
-        | undefined
-        | null;
-    signOut: () => Promise<void>;
-}
-
+import { BaseAuthService } from './BaseAuthService';
 
 export abstract class BaseAPIProvider {
     // TODO Fix "any"
-    abstract init: (data: any, auth: IAuth) => Promise<{ id: string; key: string }>;
-    abstract connect: (data: any, auth: IAuth) => Promise<unknown>;
-    abstract send: (data: any, auth: IAuth) => Promise<unknown>;
-    abstract ack: (data: any, auth: IAuth) => Promise<unknown>;
+    protected abstract auth: BaseAuthService;
+
+    abstract init: (data: any) => Promise<{ id: string; key: string }>;
+    abstract connect: (data: any) => Promise<unknown>;
+    abstract send: (data: any) => Promise<unknown>;
+    abstract ack: (data: any) => Promise<unknown>;
 
     protected endpointFactory<TData, TResponse extends { error?: { message: string } }>(url: string) {
-        return async (data: TData, auth: IAuth): Promise<Omit<TResponse, 'error'>> => {
-            const user = auth.currentUser;
-            const idToken = await user?.getIdToken();
+        return async (data: TData): Promise<Omit<TResponse, 'error'>> => {
+            const idToken = await this.auth.getIdToken();
             if (!idToken) {
-                try {
-                    await auth.signOut();
-                    throw new Error('No active user');
-                } catch (e) {
-                    throw new Error(`Failed to log out. ${e}`);
-                }
+                throw new Error('Not signed in');
             }
 
             return fetch(url, {
@@ -40,7 +27,7 @@ export abstract class BaseAPIProvider {
                 .then(async (response) => {
                     if (response.status !== 200) {
                         if (response.status === 401) {
-                            await auth.signOut();
+                            await this.auth.signOut();
                         }
                         throw new Error(String(response.status));
                     }

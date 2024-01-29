@@ -14,11 +14,13 @@ export const FIREBASE_CONFIG = {
 export interface IConfig {
     apiUrl: string;
     messagingSenderId: string;
+    apiKey: string;
 }
 
 export const getConfig = (): IConfig => {
     const messagingSenderId = FIREBASE_CONFIG.messagingSenderId;
     const apiUrl = process.env.PLASMO_PUBLIC_SERVER_URL;
+    const apiKey = process.env.PLASMO_PUBLIC_FIREBASE_API_KEY;
 
     if (!messagingSenderId) {
         throw new Error('No firebase "messagingSenderId" parameter provided');
@@ -28,5 +30,9 @@ export const getConfig = (): IConfig => {
         throw new Error('No firebase "apiUrl" parameter provided');
     }
 
-    return { messagingSenderId, apiUrl };
+    if (!apiKey) {
+        throw new Error('No firebase "apiKey" parameter provided');
+    }
+
+    return { messagingSenderId, apiUrl, apiKey };
 };

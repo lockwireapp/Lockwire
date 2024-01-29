@@ -7,13 +7,6 @@ import { QRCodeData } from '~src/actions/QRCodeData';
 import { QR_CODE_GET } from '~src/actions/QRCodeGet';
 import { fetchPUSHToken } from './fetchPUSHToken';
 
-const initPipe = async (pipe: Pipe) => {
-    if (await SessionManager.isSet()) {
-        const session = await SessionManager.getSession();
-        pipe.init(session);
-    }
-};
-
 const createPipe = async (pipe: Pipe, port: chrome.runtime.Port) => {
     try {
         await pipe.create({
@@ -32,9 +25,15 @@ const initCommunicationPort = (pipe: Pipe) => {
         if (port.name === COMMUNICATION_PORT) {
             port.onMessage.addListener(async (message) => {
                 if (message.type === QR_CODE_GET) {
-                    await createPipe(pipe, port);
+                    const hasSession = await SessionManager.isSet();
+                    if (!hasSession) {
+                        await createPipe(pipe, port);
+                    } else {
+                        port.postMessage(new QrCodeGetFail({ message: 'Session exists' }));
+                    }
                 } else {
                     console.error('Unknown port message', message);
+                    // TODO
                 }
             });
         }
@@ -43,6 +42,9 @@ const initCommunicationPort = (pipe: Pipe) => {
 
 export const initMessaging = async () => {
     const pipe = new ChromeGCMClientPipeService(messageHandlers);
-    await initPipe(pipe);
+    if (await SessionManager.isSet()) {
+        const session = await SessionManager.getSession();
+        pipe.init(session);
+    }
     initCommunicationPort(pipe);
 };

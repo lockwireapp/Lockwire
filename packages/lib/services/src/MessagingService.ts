@@ -1,6 +1,6 @@
 import { IEncryptedMessage, IMessage, MessageDTO } from '@lckw/lib-models';
 import { MessageBox } from './MessageBox';
-import { BaseAPIProvider, IAuth } from './BaseAPIProvider';
+import { BaseAPIProvider } from './BaseAPIProvider';
 import { ISession } from './SessionManager';
 
 export type IListener = (message: IMessage) => void;
@@ -18,7 +18,6 @@ export abstract class MessagingService {
 
     constructor(
         protected api: BaseAPIProvider,
-        protected auth: IAuth,
         private serverId: string
     ) {
     }
@@ -44,7 +43,6 @@ export abstract class MessagingService {
                 from: this.session.id,
                 ...messageData
             },
-            this.auth
         );
     }
 

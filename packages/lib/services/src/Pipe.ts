@@ -4,10 +4,12 @@ import { ISession, SessionManager } from './SessionManager';
 import { ICredentials, MessageBox } from './MessageBox';
 import { MessagingService } from './MessagingService';
 import { BaseAPIProvider } from './BaseAPIProvider';
+import { BaseAuthService } from './BaseAuthService';
 
 export type IPipeMessageHandler = (data: IMessageData, pipe: Pipe) => Promise<void>;
 
 export abstract class Pipe {
+    protected abstract auth: BaseAuthService;
     protected abstract api: BaseAPIProvider;
     protected abstract messaging: MessagingService;
 
@@ -31,7 +33,7 @@ export abstract class Pipe {
     }
 
     async create(props: IInitSessionProps): Promise<void> {
-        const service = new SessionInitService(this.api, this.messaging);
+        const service = new SessionInitService(this.api, this.auth, this.messaging);
         const session = await service.initSession(props);
         this.init(session);
     }
