@@ -5,6 +5,7 @@
   ],
   "include": ["./**/*.ts"],
   "compilerOptions": {
+    "strict": true,
     "outDir": "./dist",
     "declaration": true,
     "strictNullChecks": true,
