@@ -1,0 +1,35 @@
+{
+  "settings": {
+    "migrated": 4,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "none",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "RiShipLine",
+      "RiFileImageLine",
+      "RiStickyNoteLine",
+      "RiFileAddLine",
+      "RiLinksFill"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInFrontmatterEnabled": false,
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconIdentifier": ":"
+  },
+  "Files": "RiFileImageLine",
+  "Notes": "RiStickyNoteLine",
+  "Reference": "RiLinksFill",
+  "Templates": "RiFileAddLine",
+  "Boards": "RiShipLine"
+}

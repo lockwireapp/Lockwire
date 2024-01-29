@@ -1,0 +1,7 @@
+{
+  "new-note-template": "Templates/Default.md",
+  "new-note-folder": "Boards",
+  "lane-width": 320,
+  "show-view-as-markdown": false,
+  "date-picker-week-start": 1
+}
