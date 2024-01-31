@@ -11,22 +11,19 @@ const useAuthState = () => {
     const [signedIn, setSignedIn] = useState(auth.isAuthenticated());
 
     useEffect(() => {
-        const subscriberIndex = auth.addEventListener((type) => {
+        auth.addEventListener((type) => {
             if (type === AuthEvent.SIGN_IN) {
                 setSignedIn(true);
             } else if (type === AuthEvent.SIGN_OUT) {
                 setSignedIn(false);
             }
         });
-
-        return () => auth.removeEventListener(subscriberIndex);
     }, [auth, signedIn]);
 
     return signedIn;
 };
 
 export const RootNavigation: React.FC<IRootNavigationProps> = () => {
-    const auth = useAuth();
     const signedIn = useAuthState();
 
     return signedIn ? <UserStack /> : <AuthStack />;

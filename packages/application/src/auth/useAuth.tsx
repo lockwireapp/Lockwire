@@ -1,4 +1,4 @@
-import getAuth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import getFirebaseAuth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import React, { createContext, useContext } from 'react';
 import { AuthEvent, BaseAuthService } from '@lckw/lib-services';
 
@@ -9,7 +9,6 @@ class FirebaseAuthService extends BaseAuthService {
 
     constructor(private auth: FirebaseAuthTypes.Module) {
         super();
-        // this.auth.signOut()
     }
 
     async getIdToken(): Promise<string | null> {
@@ -33,8 +32,7 @@ class FirebaseAuthService extends BaseAuthService {
     }
 
     addEventListener(fn: IAuthEventSubscriber): number {
-        this.subscribers.push(fn);
-        return this.subscribers.length - 1;
+        return this.subscribers.push(fn) - 1;
     }
 
     removeEventListener(index: number): void {
@@ -42,12 +40,12 @@ class FirebaseAuthService extends BaseAuthService {
     }
 
     emitEvent(event: AuthEvent): void {
-        this.subscribers.forEach((fn) => fn(event));
+        this.subscribers.filter(Boolean).forEach((fn) => fn(event));
     }
 }
 
-const auth = getAuth();
-const service = new FirebaseAuthService(auth);
+const firebaseAuth = getFirebaseAuth();
+const service = new FirebaseAuthService(firebaseAuth);
 const AuthContext = createContext<FirebaseAuthService>(service);
 
 export const useAuth = () => useContext(AuthContext);
