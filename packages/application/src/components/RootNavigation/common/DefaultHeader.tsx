@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native-paper';
 import { StatusBar, StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
 import { HeaderActionButton } from './HeaderActionButton';
 
 interface IFloatingHeaderProps {
@@ -8,7 +8,7 @@ interface IFloatingHeaderProps {
     onNavigateBack?: () => void;
 }
 
-export const FloatingHeader: React.FC<IFloatingHeaderProps> = ({ title, onNavigateBack }) => {
+export const DefaultHeader: React.FC<IFloatingHeaderProps> = ({ title, onNavigateBack }) => {
     return (
         <View style={styles.wrap}>
             <HeaderActionButton onNavigateBack={onNavigateBack} />
@@ -21,14 +21,12 @@ export const FloatingHeader: React.FC<IFloatingHeaderProps> = ({ title, onNaviga
 
 const styles = StyleSheet.create({
     wrap: {
-        position: 'absolute',
-        top: StatusBar.currentHeight,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        left: 0,
-        right: 0,
-        color: '#fff',
+        paddingTop: StatusBar.currentHeight,
+        backgroundColor: '#fff',
+        color: '#000',
     },
     title: {
         color: '#000',

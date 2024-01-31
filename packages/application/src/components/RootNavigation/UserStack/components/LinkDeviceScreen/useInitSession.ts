@@ -1,11 +1,11 @@
+import { APIProviderV1 } from '@lckw/api';
 import { objectToBase64 } from '@lckw/lib-utils';
 import { Box, Crypto, Key } from '@lckw/lib-crypto';
 import { MessageDataDTO, MessageType, SessionDevice, SessionDevicePlatform } from '@lckw/lib-models';
 import { useDevicesStorage } from '../../../../../services/DevicesStorage';
-import { getPushToken } from './getPushToken';
-import { APIProviderV1 } from '@lckw/api';
 import { useAppConfig } from '../../../../../AppConfig';
 import { useAuth } from '../../../../../auth/useAuth';
+import { getPushToken } from './getPushToken';
 
 export const useInitSession = () => {
     const auth = useAuth();
