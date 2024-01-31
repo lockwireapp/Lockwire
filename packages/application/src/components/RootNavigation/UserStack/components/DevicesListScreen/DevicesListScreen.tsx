@@ -5,10 +5,10 @@ import { IUserStackScreenComponent, UserNavigation, useUserNavigation } from '..
 import { useDevicesStorage } from '../../../../../services/DevicesStorage';
 import { DeviceListItemActions } from './components/DeviceListItemActions';
 import { DeviceTypeIcon } from './components/DeviceTypeIcon';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
 
 const AddDeviceButton: React.FC<{ extended: boolean }> = ({ extended }) => {
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const navigator = useUserNavigation();
 
     return (
@@ -26,7 +26,7 @@ const AddDeviceButton: React.FC<{ extended: boolean }> = ({ extended }) => {
 };
 
 export const DevicesListScreen: IUserStackScreenComponent<UserNavigation.DEVICES_LIST> = () => {
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const storage = useDevicesStorage();
     const navigator = useUserNavigation();
     const [isFABExtended, setFABExtended] = useState(true);

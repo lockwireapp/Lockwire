@@ -1,17 +1,16 @@
 import React from 'react';
-import { Text } from 'react-native-paper';
+import { MD3Colors, Text } from 'react-native-paper';
 import { StatusBar, StyleSheet, View } from 'react-native';
-import { HeaderActionButton } from './HeaderActionButton';
+import { HeaderActionButton, IHeaderActionButtonProps } from './HeaderActionButton';
 
-interface IFloatingHeaderProps {
+interface IFloatingHeaderProps extends IHeaderActionButtonProps {
     title: React.ReactNode;
-    onNavigateBack?: () => void;
 }
 
-export const FloatingHeader: React.FC<IFloatingHeaderProps> = ({ title, onNavigateBack }) => {
+export const FloatingHeader: React.FC<IFloatingHeaderProps> = ({ title, ...props }) => {
     return (
         <View style={styles.wrap}>
-            <HeaderActionButton onNavigateBack={onNavigateBack} />
+            <HeaderActionButton color={MD3Colors.primary100} {...props} />
             <Text variant={'titleLarge'} style={styles.title}>
                 {title}
             </Text>
@@ -31,6 +30,6 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     title: {
-        color: '#000',
+        color: '#fff',
     },
 });

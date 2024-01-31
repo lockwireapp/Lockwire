@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, HelperText, TextInput, TextInputProps } from 'react-native-paper';
 import { FormControl, VALIDATORS } from './FormControl';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
 import { useSnackbar } from '../../../../Snackbar';
 import {
     INVALID_EMAIL_ERROR,
@@ -35,7 +35,7 @@ const Input: React.FC<{ control: FormControl<string> } & TextInputProps> = ({ co
 
 export const LoginScreen: React.FC<ILoginScreenProps> = () => {
     const auth = useAuth();
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const snackbar = useSnackbar();
     const [isLoading, setLoading] = useState(false);
     const loginControl = new FormControl<string>({ validate: VALIDATORS.REQUIRED });

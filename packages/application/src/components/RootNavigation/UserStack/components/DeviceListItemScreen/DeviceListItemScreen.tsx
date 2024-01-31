@@ -6,7 +6,7 @@ import { IUserStackScreenComponent, UserNavigation } from '../../hooks/useUserNa
 import { useDevicesStorage } from '../../../../../services/DevicesStorage';
 import { useTitleUpdateEffect } from './hooks/useTitleUpdateEffect';
 import { useConfirmDialog } from '../../../common/ConfirmDialog';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
 
 export const DeviceListItemScreen: IUserStackScreenComponent<UserNavigation.DEVICE_LIST_ITEM> = ({
     route,
@@ -14,7 +14,7 @@ export const DeviceListItemScreen: IUserStackScreenComponent<UserNavigation.DEVI
 }) => {
     const id = route.params.id;
     const theme = useTheme();
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const storage = useDevicesStorage();
     const confirmDialog = useConfirmDialog();
     const { meta } = storage.get(id) || {};

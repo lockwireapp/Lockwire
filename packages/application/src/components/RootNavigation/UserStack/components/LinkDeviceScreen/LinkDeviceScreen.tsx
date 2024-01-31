@@ -7,7 +7,7 @@ import { IUserStackScreenComponent, UserNavigation, useUserNavigation } from '..
 import { BarcodeScannerFrame } from './components/BarcodeScannerFrame';
 import { BarCodeEvent, BarCodeScanner } from 'expo-barcode-scanner';
 import { CameraPermissions } from './components/CameraPermissions';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
 import { useSnackbar } from '../../../../Snackbar';
 import { useInitSession } from './useInitSession';
 import { QRCodeData } from '@lckw/lib-models';
@@ -27,7 +27,7 @@ const useFullscreenBarcodeStyles = () => {
 };
 
 export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEVICE> = () => {
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const snackbar = useSnackbar();
     const initSession = useInitSession();
     const navigation = useUserNavigation();

@@ -1,17 +1,16 @@
 import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { HeaderActionButton } from './HeaderActionButton';
+import { HeaderActionButton, IHeaderActionButtonProps } from './HeaderActionButton';
 
-interface IFloatingHeaderProps {
+interface IFloatingHeaderProps extends IHeaderActionButtonProps {
     title: React.ReactNode;
-    onNavigateBack?: () => void;
 }
 
-export const DefaultHeader: React.FC<IFloatingHeaderProps> = ({ title, onNavigateBack }) => {
+export const DefaultHeader: React.FC<IFloatingHeaderProps> = ({ title, ...props }) => {
     return (
         <View style={styles.wrap}>
-            <HeaderActionButton onNavigateBack={onNavigateBack} />
+            <HeaderActionButton {...props} />
             <Text variant={'titleLarge'} style={styles.title}>
                 {title}
             </Text>
