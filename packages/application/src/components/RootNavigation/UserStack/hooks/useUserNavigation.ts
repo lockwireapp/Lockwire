@@ -15,6 +15,12 @@ export const userNavigationLabels: Record<UserNavigation, string> = {
     LINK_DEVICE: 'Link device',
 };
 
+export const userNavigationIcons: Record<UserNavigation, string> = {
+    DEVICES_LIST: 'devices',
+    DEVICE_LIST_ITEM: '',
+    LINK_DEVICE: 'qrcode-plus',
+};
+
 type IScreen<T extends object = {}> = T & INavigationRouteComponent<UserNavigation>;
 
 export type IUserStackParamList = {
