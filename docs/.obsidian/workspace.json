@@ -63,12 +63,12 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d183addc5ef4bad1",
@@ -145,13 +145,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8d62738834952a1d",
+  "active": "b0406fb57b080ec2",
   "lastOpenFiles": [
+    "Files/Protocol.drawio",
+    "Files",
     "Boards/Notes/Deployment actions.md",
     "Boards/Development.md",
     "Notes/Untitled.md",
     "Boards/Notes",
-    "Untitled",
     "Notes/Deployment actions.md",
     "Notes/Landing.md",
     "Notes/How to write documentation.md",
