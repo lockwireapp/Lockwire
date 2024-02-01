@@ -1,9 +1,9 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Avatar, Drawer, TouchableRipple } from 'react-native-paper';
 import { DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 import { UserNavigation, userNavigationIcons, userNavigationLabels } from '../hooks/useUserNavigation';
 import { useTemplateTranslation, useTranslate } from '../../../../i18n';
-import { StyleSheet, View } from 'react-native';
 import { useAuth } from '../../../../auth/useAuth';
 
 export const UserDrawer: React.FC<DrawerContentComponentProps> = ({ navigation, ...props }) => {
