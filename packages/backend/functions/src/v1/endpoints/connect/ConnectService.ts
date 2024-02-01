@@ -24,8 +24,10 @@ export class ConnectService {
             const keyPair = Crypto.generateKeyPair();
             const sender = await Participant.create({ key, pushToken, secretKey: keyPair.secretKey.toBase64String() });
             await messaging.send(sender, receiver, data, nonce);
-            await receiver.activate(sender.id);
             await sender.activate(receiver.id);
+            // TODO convert receiver to permanent user using signInWithCustomToken
+            await receiver.activate(sender.id);
+
             return { key: keyPair.publicKey.toBase64String() };
         } else {
             // here some actions may be needed to prevent id search using brute force

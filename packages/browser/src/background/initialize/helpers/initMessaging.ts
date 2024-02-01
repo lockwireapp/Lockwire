@@ -14,7 +14,6 @@ const createTransport = async (transport: Transport, port: chrome.runtime.Port) 
             onSessionIdChange: async (id, key) => port.postMessage(new QRCodeData({ id, key })),
         });
     } catch (e) {
-        console.error(e);
         const message = `Failed to init session. ${(e as Error)?.message || e || 'Unknown error'}`;
         port.postMessage(new QrCodeGetFail({ message }));
     }

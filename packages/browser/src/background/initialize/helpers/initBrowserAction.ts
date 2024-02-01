@@ -11,6 +11,8 @@ export const initBrowserAction = async () => {
     const hasSession = await SessionManager.isSet();
     const isPopupEnabled = await popup.isEnabled();
 
+    // await SessionManager.endSession();
+
     if (hasSession && isPopupEnabled) {
         await popup.disable();
     }

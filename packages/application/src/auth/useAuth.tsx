@@ -9,6 +9,7 @@ class FirebaseAuthService extends BaseAuthService {
 
     constructor(private auth: FirebaseAuthTypes.Module) {
         super();
+        console.log('construct new FirebaseAuthService');
     }
 
     async getIdToken(): Promise<string | null> {
@@ -18,7 +19,7 @@ class FirebaseAuthService extends BaseAuthService {
     async signOut(): Promise<void> {
         await this.auth.signOut();
         this.emitEvent(AuthEvent.SIGN_OUT);
-        this.subscribers = [];
+        this.subscribers = this.subscribers.filter(Boolean);
     }
 
     isAuthenticated(): boolean {
@@ -27,6 +28,7 @@ class FirebaseAuthService extends BaseAuthService {
 
     async signInWithEmailAndPassword(email: string, password: string) {
         const user = await this.auth.signInWithEmailAndPassword(email, password);
+        console.log(this.subscribers);
         this.emitEvent(AuthEvent.SIGN_IN);
         return user;
     }

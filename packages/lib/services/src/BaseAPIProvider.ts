@@ -1,5 +1,7 @@
 import { BaseAuthService } from './BaseAuthService';
 
+export class IdTokenRevokedError extends Error {}
+
 export abstract class BaseAPIProvider {
     // TODO Fix "any"
     protected abstract auth: BaseAuthService;
@@ -11,7 +13,11 @@ export abstract class BaseAPIProvider {
 
     protected endpointFactory<TData, TResponse extends { error?: { message: string } }>(url: string) {
         return async (data: TData): Promise<Omit<TResponse, 'error'>> => {
-            const idToken = await this.auth.getIdToken();
+            const idToken = await this.auth.getIdToken().catch((e) => {
+                this.auth.signOut();
+                throw new IdTokenRevokedError();
+            });
+
             if (!idToken) {
                 throw new Error('Not signed in');
             }
@@ -38,11 +44,11 @@ export abstract class BaseAPIProvider {
                     }
                     return response.json();
                 })
-                .then((data: TResponse) => {
-                    if (data.error) {
-                        throw new Error(data.error.message || 'Unknown error');
+                .then((responseData: TResponse) => {
+                    if (responseData.error) {
+                        throw new Error(responseData.error.message || 'Unknown error');
                     }
-                    return data;
+                    return responseData;
                 });
         };
     }

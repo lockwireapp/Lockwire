@@ -4,7 +4,7 @@ import { MessageDataDTO, MessageType } from '@lckw/lib-models';
 import { ISession, SessionManager } from './SessionManager';
 import { ICredentials, MessageBox } from './MessageBox';
 import { MessagingService } from './MessagingService';
-import { BaseAPIProvider } from './BaseAPIProvider';
+import { BaseAPIProvider, IdTokenRevokedError } from './BaseAPIProvider';
 import { BaseAuthService } from './BaseAuthService';
 
 export interface IInitSessionProps {
@@ -32,7 +32,7 @@ export class SessionInitService {
         try {
             return await this.sessionInitAttempt(props);
         } catch (e) {
-            if (e instanceof TimeoutError) {
+            if (e instanceof TimeoutError || e instanceof IdTokenRevokedError) {
                 return this.initSession(props, attempt + 1);
             } else {
                 throw e;

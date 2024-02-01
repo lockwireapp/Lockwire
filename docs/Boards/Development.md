@@ -50,7 +50,8 @@ kanban-plugin: basic
 
 ## Backend
 
-- [ ] Replace PUSH transport with in-cloud messaging #Backend #Transport<br>- faster<br>- exclude third party<br>- no need for second encryption
+- [ ] Upgrade anonymous users on session connect #Backend #Transport<br><br>- Should not be possible to log in as a vault using upgraded user account
+- [ ] Replace PUSH transport with websockets #Backend #Transport<br>- faster<br>- exclude third party<br>- no need for second encryption
 - [ ] Write tests #Transport
 - [ ] Implement key rotation #Transport
 - [ ] Use separate key for PUSH encryption #Transport
