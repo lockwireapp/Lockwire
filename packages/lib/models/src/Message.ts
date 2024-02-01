@@ -4,7 +4,7 @@ import { isObject, IsString, validateSync } from 'class-validator';
 
 export interface IEncryptedMessage {
     data: Base64String;
-    nonce: string;
+    nonce: Base64String;
 }
 
 export interface IMessage extends IEncryptedMessage {
@@ -27,7 +27,7 @@ export abstract class Message implements IMessage {
     abstract data: Base64String;
 
     @IsString()
-    abstract nonce: string;
+    abstract nonce: Base64String;
 }
 
 export class MessageDTO extends Message {
@@ -35,7 +35,7 @@ export class MessageDTO extends Message {
     from: string;
     key: Base64String | undefined;
     data: Base64String;
-    nonce: string;
+    nonce: Base64String;
 
     constructor(props: IMessage) {
         super();
@@ -61,8 +61,8 @@ export class MessageDTO extends Message {
 
     toPlainObject(): Record<keyof IMessage, string> {
         const obj = {
-            messageId: this.id,
-            senderId: this.from,
+            id: this.id,
+            from: this.from,
             key: this.key,
             nonce: this.nonce,
             data: this.data,

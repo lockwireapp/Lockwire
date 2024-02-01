@@ -1,7 +1,7 @@
-import { Snackbar, SnackbarProps } from 'react-native-paper';
+import { Icon, Snackbar, SnackbarProps, Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { createContext, useContext, useMemo, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NOOP } from '@lckw/lib-utils';
 
 interface ISnackbarContext {
@@ -10,6 +10,7 @@ interface ISnackbarContext {
 
 interface ISnackbarState extends Omit<SnackbarProps, 'children' | 'visible'> {
     text: React.ReactNode;
+    mode?: 'error'; // TODO implement
 }
 
 const SnackbarContext = createContext<ISnackbarContext>({

@@ -1,6 +1,6 @@
 import { IEncryptedMessage, IMessage, MessageDTO } from '@lckw/lib-models';
 import { MessageBox } from './MessageBox';
-import { BaseAPIProvider, IAuth } from './BaseAPIProvider';
+import { BaseAPIProvider } from './BaseAPIProvider';
 import { ISession } from './SessionManager';
 
 export type IListener = (message: IMessage) => void;
@@ -18,10 +18,8 @@ export abstract class MessagingService {
 
     constructor(
         protected api: BaseAPIProvider,
-        protected auth: IAuth,
-        private serverId: string
-    ) {
-    }
+        private serverId: string,
+    ) {}
 
     protected abstract ack(messageId: string): Promise<void>;
 
@@ -38,22 +36,19 @@ export abstract class MessagingService {
     }
 
     async send(messageData: IEncryptedMessage) {
-        await this.api.send(
-            {
-                to: this.session.cpId,
-                from: this.session.id,
-                ...messageData
-            },
-            this.auth
-        );
+        await this.api.send({
+            to: this.session.cpId,
+            from: this.session.id,
+            ...messageData,
+        });
     }
 
     protected async emitEvent(message: { data: object; from: string }) {
         const data = message.data;
-        if (message.from === this.serverId && this.isMessage(data)) {
+        if (message.from === this.serverId && this.isMessage(data) && this._session) {
             const dataDecrypted = MessageBox.decrypt(data, {
                 key: this.session.secretKey,
-                sign: this.session.cpKey
+                sign: this.session.serverSign,
             });
             const messageData = MessageDTO.create(dataDecrypted);
             this.listeners.forEach((fn) => fn && fn(messageData));

@@ -7,11 +7,12 @@ import { IUserStackScreenComponent, UserNavigation, useUserNavigation } from '..
 import { BarcodeScannerFrame } from './components/BarcodeScannerFrame';
 import { BarCodeEvent, BarCodeScanner } from 'expo-barcode-scanner';
 import { CameraPermissions } from './components/CameraPermissions';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
 import { useSnackbar } from '../../../../Snackbar';
 import { useInitSession } from './useInitSession';
 import { QRCodeData } from '@lckw/lib-models';
 import { throttle } from './throttle';
+import { useIsFocused } from '@react-navigation/native';
 
 const BARCODE_CAMERA_ASPECT_RATIO = 1.78;
 
@@ -27,8 +28,9 @@ const useFullscreenBarcodeStyles = () => {
 };
 
 export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEVICE> = () => {
-    const t = useTranslations();
     const snackbar = useSnackbar();
+    const isFocused = useIsFocused();
+    const t = useTemplateTranslation();
     const initSession = useInitSession();
     const navigation = useUserNavigation();
     const barcodeStyles = useFullscreenBarcodeStyles();
@@ -37,8 +39,13 @@ export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEV
 
     const throttled = useMemo(() => {
         return throttle(async (event: BarCodeEvent) => {
+            if (isLoading) {
+                return;
+            }
+
             try {
                 const qrCode = QRCodeData.parse(event.data || '');
+                console.log(qrCode);
                 if (qrCode.isValid() && scannedId !== qrCode.id) {
                     setLoading(true);
                     setScannedId(qrCode.id);
@@ -55,18 +62,20 @@ export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEV
                 snackbar.show({ text: `${t`Failed to link device`}. ${e}` });
             }
         }, 500);
-    }, [initSession, navigation, scannedId, snackbar, t]);
+    }, [isLoading, initSession, navigation, scannedId, snackbar, t]);
 
     const handleQrCodeScanned = useCallback(throttled, [throttled]);
 
     return (
         <CameraPermissions>
             <BarcodeScannerFrame>
-                <BarCodeScanner
-                    barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-                    onBarCodeScanned={isLoading ? void 0 : handleQrCodeScanned}
-                    style={barcodeStyles}
-                />
+                {isFocused && (
+                    <BarCodeScanner
+                        barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+                        onBarCodeScanned={isLoading ? void 0 : handleQrCodeScanned}
+                        style={barcodeStyles}
+                    />
+                )}
             </BarcodeScannerFrame>
             {isLoading && (
                 <View style={styles.loadingOverlay}>

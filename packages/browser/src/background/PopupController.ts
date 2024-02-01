@@ -1,5 +1,5 @@
 export class PopupController {
-    private popupPageUrl: string;
+    private popupPageUrl: string | undefined;
 
     constructor() {
         chrome.action.getPopup({}, (url) => {
@@ -22,6 +22,10 @@ export class PopupController {
     }
 
     async enable() {
-        await chrome.action.setPopup({ popup: this.popupPageUrl });
+        if (!this.popupPageUrl) {
+            throw new Error('');
+        } else {
+            await chrome.action.setPopup({ popup: this.popupPageUrl });
+        }
     }
 }

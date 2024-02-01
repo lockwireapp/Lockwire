@@ -21,7 +21,7 @@
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone",
         "NSFaceIDUsageDescription": "Allow $(PRODUCT_NAME) to use Face ID."
       },
-      "bundleIdentifier": "locwire.app"
+      "bundleIdentifier": "com.lockwire.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -34,7 +34,7 @@
         "android.permission.USE_BIOMETRIC",
         "android.permission.USE_FINGERPRINT"
       ],
-      "package": "locwire.app"
+      "package": "com.lockwire.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"

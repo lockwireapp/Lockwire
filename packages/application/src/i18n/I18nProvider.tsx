@@ -10,16 +10,20 @@ const translations = {
     en: {},
 };
 const i18n = new I18n(translations);
-
 const I18nContext = createContext(i18n);
 
 export const useI18n = () => {
     return useContext(I18nContext);
 };
 
-export const useTranslations = () => {
-    const i18n = useI18n();
-    return ([defaultValue]: TemplateStringsArray) => i18n.translate(defaultValue, { defaultValue });
+export const useTemplateTranslation = () => {
+    const t = useI18n();
+    return ([defaultValue]: TemplateStringsArray) => t.translate(defaultValue, { defaultValue });
+};
+
+export const useTranslate = () => {
+    const t = useI18n();
+    return (value: string) => t.translate(value, { defaultValue: value });
 };
 
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

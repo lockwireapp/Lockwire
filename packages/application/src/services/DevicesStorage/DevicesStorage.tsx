@@ -1,7 +1,7 @@
-import * as SecureStore from 'expo-secure-store';
-import { IDeviceMetadata } from '@lckw/lib-models';
-import { createService } from '../../utils';
 import { useEffect, useState } from 'react';
+import * as SecureStore from 'expo-secure-store';
+import { IDeviceMetadata, IDeviceMetadataInternal } from '@lckw/lib-models';
+import { createService } from '../../utils';
 
 export interface IDeviceCredentials {
     id: string;
@@ -17,7 +17,7 @@ export interface IDeviceCredentials {
 }
 
 export interface IDevice extends IDeviceCredentials {
-    meta: IDeviceMetadata;
+    meta: IDeviceMetadataInternal;
 }
 
 class DeviceStorageRecord implements IDevice {
@@ -25,7 +25,7 @@ class DeviceStorageRecord implements IDevice {
     readonly serverSign: string;
     readonly key: string;
     readonly secretKey: string;
-    readonly meta: IDeviceMetadata;
+    readonly meta: IDeviceMetadataInternal;
 
     constructor(props: IDevice) {
         this.id = props.id;
@@ -69,7 +69,7 @@ class DevicesStorage {
         return !!session;
     }
 
-    get(id: string | undefined) {
+    get(id: string | undefined): DeviceStorageRecord | undefined {
         return this.state[id!];
     }
 

@@ -1,5 +1,6 @@
-export { IPipeMessageHandler, Pipe } from './src/Pipe';
+export { ITransportMessageHandler, Transport } from './src/Transport';
 export { ISession, SessionManagerEvent, SessionManager } from './src/SessionManager';
 export { MessagingService, IListener } from './src/MessagingService';
-export { IAuth, BaseAPIProvider } from './src/BaseAPIProvider';
+export { BaseAPIProvider } from './src/BaseAPIProvider';
+export { AuthEvent, BaseAuthService } from './src/BaseAuthService';
 export { MessageBox } from './src/MessageBox';

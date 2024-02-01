@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import auth from '@react-native-firebase/auth';
 import { StyleSheet, View } from 'react-native';
 import { Button, HelperText, TextInput, TextInputProps } from 'react-native-paper';
 import { FormControl, VALIDATORS } from './FormControl';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation } from '../../../../../i18n';
+import { useSnackbar } from '../../../../Snackbar';
+import {
+    INVALID_EMAIL_ERROR,
+    INVALID_PASSWORD_ERROR,
+    isAuthError,
+    USER_DISABLED_ERROR,
+    USER_NOT_FOUND_ERROR,
+} from './LoginScreen.const';
+import { useAuth } from '../../../../../auth/useAuth';
 
 export interface ILoginScreenProps {}
 
@@ -26,7 +34,9 @@ const Input: React.FC<{ control: FormControl<string> } & TextInputProps> = ({ co
 };
 
 export const LoginScreen: React.FC<ILoginScreenProps> = () => {
-    const t = useTranslations();
+    const auth = useAuth();
+    const t = useTemplateTranslation();
+    const snackbar = useSnackbar();
     const [isLoading, setLoading] = useState(false);
     const loginControl = new FormControl<string>({ validate: VALIDATORS.REQUIRED });
     const passwordControl = new FormControl<string>({ validate: VALIDATORS.REQUIRED });
@@ -37,12 +47,31 @@ export const LoginScreen: React.FC<ILoginScreenProps> = () => {
             passwordControl.setTouched(true);
             return;
         }
-
         setLoading(true);
+
         try {
-            await auth().signInWithEmailAndPassword(loginControl.value, passwordControl.value);
+            await auth.signInWithEmailAndPassword(loginControl.value, passwordControl.value);
             setLoading(false);
         } catch (e) {
+            if (isAuthError(e)) {
+                switch (e.code) {
+                    case INVALID_EMAIL_ERROR:
+                    case USER_NOT_FOUND_ERROR:
+                    case INVALID_PASSWORD_ERROR: {
+                        snackbar.show({ text: t`Email or password are invalid`, mode: 'error' });
+                        break;
+                    }
+                    case USER_DISABLED_ERROR: {
+                        snackbar.show({ text: t`User is inactive`, mode: 'error' });
+                        break;
+                    }
+                    default: {
+                        snackbar.show({ text: t`Unhandled error`, mode: 'error' });
+                    }
+                }
+            } else {
+                console.error(e);
+            }
             setLoading(false);
         }
     };

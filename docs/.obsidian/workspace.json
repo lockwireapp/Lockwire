@@ -63,7 +63,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -145,8 +146,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8d62738834952a1d",
+  "active": "b0406fb57b080ec2",
   "lastOpenFiles": [
+    "Files/Protocol.drawio",
     "Boards/Notes/Deployment actions.md",
     "Boards/Development.md",
     "Notes/Untitled.md",

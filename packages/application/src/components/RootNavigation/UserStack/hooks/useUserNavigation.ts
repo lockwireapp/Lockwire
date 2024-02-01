@@ -1,13 +1,25 @@
 import React from 'react';
 import { RouteProp, useNavigation } from '@react-navigation/native';
-import { createStackNavigator, StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { INavigationRouteComponent } from '../../interfaces/INavigationRouteComponent';
+import { createDrawerNavigator, DrawerNavigationProp, DrawerScreenProps } from '@react-navigation/drawer';
 
 export enum UserNavigation {
     DEVICES_LIST = 'DEVICES_LIST',
     DEVICE_LIST_ITEM = 'DEVICE_LIST_ITEM',
     LINK_DEVICE = 'LINK_DEVICE',
 }
+
+export const userNavigationLabels: Record<UserNavigation, string> = {
+    DEVICES_LIST: 'Devices',
+    DEVICE_LIST_ITEM: 'View device',
+    LINK_DEVICE: 'Link device',
+};
+
+export const userNavigationIcons: Record<UserNavigation, string> = {
+    DEVICES_LIST: 'devices',
+    DEVICE_LIST_ITEM: '',
+    LINK_DEVICE: 'qrcode-plus',
+};
 
 type IScreen<T extends object = {}> = T & INavigationRouteComponent<UserNavigation>;
 
@@ -18,11 +30,10 @@ export type IUserStackParamList = {
 };
 
 export type IUserStackRoute = RouteProp<IUserStackParamList, UserNavigation>;
+export type IUserNavigationProp = DrawerNavigationProp<IUserStackParamList, UserNavigation>;
 
-export const useUserNavigation = () => {
-    return useNavigation<StackNavigationProp<IUserStackParamList, UserNavigation>>();
-};
+export const useUserNavigation = () => useNavigation<IUserNavigationProp>();
 
-export const User = createStackNavigator<IUserStackParamList>();
+export const User = createDrawerNavigator<IUserStackParamList>();
 
-export type IUserStackScreenComponent<T extends UserNavigation> = React.FC<StackScreenProps<IUserStackParamList, T>>;
+export type IUserStackScreenComponent<T extends UserNavigation> = React.FC<DrawerScreenProps<IUserStackParamList, T>>;

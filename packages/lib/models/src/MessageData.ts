@@ -18,7 +18,7 @@ interface MetadataMessage {
     value: IDeviceMetadata;
 }
 
-export type IMessageDataValue = MetadataMessage;
+export type IMessageDataValue = MetadataMessage | {};
 
 export interface IMessageData {
     type: MessageType;
@@ -43,6 +43,7 @@ export class MessageDataDTO extends MessageData {
         this.value = props.value;
     }
 
+    // TODO get rid of unknown
     static create(props: unknown): MessageDataDTO {
         if (!isObject(props)) {
             throw new Error(`Failed to create MessageDataDTO. Unsupported value "${props}" has been used as source`);

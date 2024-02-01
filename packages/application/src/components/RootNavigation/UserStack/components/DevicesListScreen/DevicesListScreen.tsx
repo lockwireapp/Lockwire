@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
 import { AnimatedFAB, List, Text } from 'react-native-paper';
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View } from 'react-native';
-import { IUserStackScreenComponent, UserNavigation, useUserNavigation } from '../../hooks/useUserNavigation';
+import {
+    IUserStackScreenComponent,
+    UserNavigation,
+    userNavigationIcons,
+    userNavigationLabels,
+    useUserNavigation,
+} from '../../hooks/useUserNavigation';
 import { useDevicesStorage } from '../../../../../services/DevicesStorage';
 import { DeviceListItemActions } from './components/DeviceListItemActions';
 import { DeviceTypeIcon } from './components/DeviceTypeIcon';
-import { useTranslations } from '../../../../../i18n';
+import { useTemplateTranslation, useTranslate } from '../../../../../i18n';
 
 const AddDeviceButton: React.FC<{ extended: boolean }> = ({ extended }) => {
-    const t = useTranslations();
+    const translate = useTranslate();
     const navigator = useUserNavigation();
 
     return (
         <AnimatedFAB
-            icon={'qrcode-scan'}
-            label={t`Add new device`}
+            icon={userNavigationIcons.LINK_DEVICE}
+            label={translate(userNavigationLabels.LINK_DEVICE)}
             extended={extended}
             onPress={() => navigator.navigate(UserNavigation.LINK_DEVICE, { from: UserNavigation.DEVICES_LIST })}
             animateFrom={'right'}
             style={{ position: 'absolute', bottom: 20, right: 20 }}
-            iconMode={'static'}
             visible
         />
     );
 };
 
 export const DevicesListScreen: IUserStackScreenComponent<UserNavigation.DEVICES_LIST> = () => {
-    const t = useTranslations();
+    const t = useTemplateTranslation();
     const storage = useDevicesStorage();
     const navigator = useUserNavigation();
     const [isFABExtended, setFABExtended] = useState(true);

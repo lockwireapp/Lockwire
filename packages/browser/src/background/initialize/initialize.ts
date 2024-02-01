@@ -3,7 +3,7 @@ import { initMessaging } from './helpers/initMessaging';
 import { initBrowserAction } from './helpers/initBrowserAction';
 
 export const initialize = async () => {
-    initFirebase();
+    await initFirebase();
     await initMessaging();
     await initBrowserAction();
 };
