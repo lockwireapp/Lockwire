@@ -27,8 +27,8 @@ const useFullscreenBarcodeStyles = () => {
 };
 
 export const LinkDeviceScreen: IUserStackScreenComponent<UserNavigation.LINK_DEVICE> = () => {
-    const t = useTemplateTranslation();
     const snackbar = useSnackbar();
+    const t = useTemplateTranslation();
     const initSession = useInitSession();
     const navigation = useUserNavigation();
     const barcodeStyles = useFullscreenBarcodeStyles();
