@@ -21,7 +21,6 @@ kanban-plugin: basic
 - [ ] Introduce DI #Browser
 - [ ] Redesign popup #Browser<br>- Include description
 - [ ] Pass chrome store review #Browser
-- [ ] Remove firebase, auth manually #Browser<br><br>[Firebase REST API](https://firebase.google.com/docs/reference/rest/auth#section-sign-in-anonymously)
 - [ ] Semi / automatic registration #Browser
 - [ ] QR code retry button #Browser
 - [ ] Implement incognito session mode #Browser
@@ -51,6 +50,7 @@ kanban-plugin: basic
 
 ## Backend
 
+- [ ] Replace PUSH transport with in-cloud messaging #Backend #Transport<br>- faster<br>- exclude third party<br>- no need for second encryption
 - [ ] Write tests #Transport
 - [ ] Implement key rotation #Transport
 - [ ] Use separate key for PUSH encryption #Transport
