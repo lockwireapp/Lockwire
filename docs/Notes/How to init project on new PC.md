@@ -15,13 +15,12 @@ Tags: #How
 3. Run `npm run dev`  
   
 ### How to build android app locally  
-1. Install android commandline tools  
+1. Install android command line tools or Android studio
 2. Configure ANDROID_HOME env variable and add it to .bashrc  
    ```  
    export ANDROID_HOME=$HOME/.android-sdk  
-   export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin   buid
+   export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin   
    ```
-
 3. Run `npm run build:dev:android:local`
 
 ### How to build android app in EAS
