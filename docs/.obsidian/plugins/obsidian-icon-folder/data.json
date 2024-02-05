@@ -31,5 +31,6 @@
   "Notes": "RiStickyNoteLine",
   "Reference": "RiLinksFill",
   "Templates": "RiFileAddLine",
-  "Boards": "RiShipLine"
+  "Boards": "RiShipLine",
+  "References": "RiLinksFill"
 }

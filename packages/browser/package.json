@@ -7,7 +7,8 @@
         "lint": "prettier --write \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
         "lint:ci": "prettier -c \"**/*.+(json|yml|css|md|gql)\" ./src && eslint --ext .js,.jsx,.ts,.tsx ./src",
         "build:prod": "plasmo build --target .env.prod",
-        "package": "npm run build:prod && plasmo package"
+        "package": "npm run build:prod && plasmo package",
+        "postinstall": "sh ./scripts/postinstall.sh"
     },
     "dependencies": {
         "clsx": "2.1.0",

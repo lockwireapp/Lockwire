@@ -115,3 +115,4 @@ packages/lib/**/*.map
 
 emulator-data*
 firebase-export-*
+google-services.json

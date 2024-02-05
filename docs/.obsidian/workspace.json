@@ -11,9 +11,11 @@
             "id": "8d62738834952a1d",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Boards/Development.md"
+                "file": "Notes/How to init project on new PC.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -63,13 +65,11 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d183addc5ef4bad1",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Boards/Development.md",
+                "file": "Notes/How to init project on new PC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Boards/Development.md",
+                "file": "Notes/How to init project on new PC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Boards/Development.md"
+                "file": "Notes/How to init project on new PC.md"
               }
             }
           }
@@ -146,19 +146,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b0406fb57b080ec2",
+  "active": "8d62738834952a1d",
   "lastOpenFiles": [
+    "Notes/Passkeys.md",
+    "Boards/Development.md",
+    "Notes/How to write documentation.md",
+    "Notes/How to init project on new PC.md",
+    "References/Secure Authentication - Will Passkeys Kill the Password?.md",
+    "References",
+    "Notes/Features.md",
+    "Files",
+    "Templates/Default.md",
     "Files/Protocol.drawio",
     "Boards/Notes/Deployment actions.md",
-    "Boards/Development.md",
-    "Notes/Untitled.md",
     "Boards/Notes",
-    "Untitled",
     "Notes/Deployment actions.md",
     "Notes/Landing.md",
-    "Notes/How to write documentation.md",
     "Boards",
-    "Templates/Default.md",
     "Notes/Zettelkasten.md",
     "Welcome.md"
   ]

@@ -33,6 +33,7 @@ kanban-plugin: basic
 
 ## Application
 
+- [ ] Prod env configuration #App
 - [ ] Forbid unused auth actions #App  #Auth
 - [ ] Verify tokens #App   #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)
 - [ ] Detect token revocation #App   #Auth<br><br>[Detect ID token revocation](https://firebase.google.com/docs/auth/admin/manage-sessions#detect_id_token_revocation)
