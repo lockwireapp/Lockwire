@@ -20,7 +20,10 @@
   },
   "dependencies": {
     "class-validator": "0.14.1",
-    "firebase": "10.7.1"
+    "firebase": "10.7.1",
+    "@lckw/lib-crypto":  "~0.0.1-dev",
+    "@lckw/lib-models":  "~0.0.1-dev",
+    "@lckw/lib-utils":  "~0.0.1-dev"
   },
   "devDependencies": {
     "@types/validator": "13.11.8",
