@@ -1,6 +1,6 @@
 29/01/2024 14:35
 Status: #note
-Tags: [How to]
+Tags: #How 
 
 #### 1. Use Obsidian to open documents
 ##### 2. Use [[Zettelkasten]] method

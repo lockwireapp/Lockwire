@@ -11,26 +11,15 @@
             "id": "8d62738834952a1d",
             "type": "leaf",
             "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Boards/Development.md"
-              }
-            }
-          },
-          {
-            "id": "d5e34cdb609feaea",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/Passkeys.md",
+                "file": "Notes/How to init project on new PC.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -76,8 +65,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/Passkeys.md",
+                "file": "Notes/How to init project on new PC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Notes/Passkeys.md",
+                "file": "Notes/How to init project on new PC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/Passkeys.md"
+                "file": "Notes/How to init project on new PC.md"
               }
             }
           }
@@ -158,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d5e34cdb609feaea",
+  "active": "8d62738834952a1d",
   "lastOpenFiles": [
-    "References/Secure Authentication - Will Passkeys Kill the Password?.md",
-    "Boards/Development.md",
     "Notes/Passkeys.md",
+    "Boards/Development.md",
+    "Notes/How to write documentation.md",
+    "Notes/How to init project on new PC.md",
+    "References/Secure Authentication - Will Passkeys Kill the Password?.md",
     "References",
     "Notes/Features.md",
     "Files",
@@ -172,7 +162,6 @@
     "Boards/Notes",
     "Notes/Deployment actions.md",
     "Notes/Landing.md",
-    "Notes/How to write documentation.md",
     "Boards",
     "Notes/Zettelkasten.md",
     "Welcome.md"

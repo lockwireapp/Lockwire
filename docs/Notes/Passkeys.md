@@ -1,6 +1,6 @@
 05/02/2024 16:20
 Status: #note
-Tags: [[Passkeys]]
+Tags: #Passkeys
 
 #### Downsides:
 - Adoption
