@@ -112,7 +112,11 @@ packages/lib/**/*.js
 packages/lib/**/*.map
 *.aab
 *.apk
+.easignore
 
 emulator-data*
 firebase-export-*
+
+### EASINCLUDE! ###
+### BELOW THIS LINE WILL NOT BE IGNORED BY EAS ###
 google-services.json
