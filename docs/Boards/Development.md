@@ -17,6 +17,7 @@ kanban-plugin: basic
 
 ## Browser
 
+- [ ] Restrict API key #Browser<br><br>[Credentials](https://console.cloud.google.com/apis/credentials?pli=1&rapt=AEjHL4PJm0gZV_SufDToo_9zCORCn0IRAF1W-itUJhm2BaA9xm5O4BrKP5nY8KaWzv7Rnz_xb88zhU8i5FJRXjEi-A1QVJcEHhf39cn58g7DKKqTATl7a5c&project=lockwire-9561c)
 - [ ] Forbid unused auth actions #Browser  #Auth
 - [ ] Introduce DI #Browser
 - [ ] Redesign popup #Browser<br>- Include description
@@ -33,6 +34,7 @@ kanban-plugin: basic
 
 ## Application
 
+- [ ] Restrict API key #App<br><br>[Credentials](https://console.cloud.google.com/apis/credentials?pli=1&rapt=AEjHL4PJm0gZV_SufDToo_9zCORCn0IRAF1W-itUJhm2BaA9xm5O4BrKP5nY8KaWzv7Rnz_xb88zhU8i5FJRXjEi-A1QVJcEHhf39cn58g7DKKqTATl7a5c&project=lockwire-9561c)
 - [ ] Prod env configuration #App
 - [ ] Forbid unused auth actions #App  #Auth
 - [ ] Verify tokens #App   #Auth<br><br>[Verify ID tokens](https://www.google.com/url?q=https://firebase.google.com/docs/auth/admin/verify-id-tokens%23verify_id_tokens_using_the_firebase_admin_sdk&sa=D&source=editors&ust=1706530213495097&usg=AOvVaw0RH9o8ZV7Z9wP73RctjJ7h)

@@ -9,7 +9,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:dev:android:local": "eas build --profile development --platform android --local",
+    "build:dev:android:local": "export GOOGLE_SERVICES_JSON=$(realpath \"google-services.json\"); eas build --profile development --platform android --local",
     "build:dev:android:eas": "eas build --profile development --platform android",
     "postinstall": "sh scripts/postinstall.sh"
   },
