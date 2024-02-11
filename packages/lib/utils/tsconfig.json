@@ -6,6 +6,12 @@
   "include": ["./**/*.ts"],
   "compilerOptions": {
     "strict": true,
+    "target": "ES2015",
+    "useDefineForClassFields": true,
+    "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
     "outDir": "./dist",
     "declaration": true,
     "strictNullChecks": true,
@@ -15,7 +21,5 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "baseUrl": "./",
-    "lib": ["ES2015", "DOM"]
-  },
-
+  }
 }

@@ -1,1 +1,1 @@
-export * from './QRCodeState';
+export * from './QRCodeState.tsx';

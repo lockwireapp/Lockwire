@@ -1,10 +1,9 @@
 import cl from 'clsx';
-import React from 'react';
 import { QRCode } from 'react-qrcode-logo';
 import { QRCodeData } from '@lckw/lib-models';
-import { useQrCode } from '../useQrCode';
 import { QRCodeState } from './QRCodeState';
 import styles from './App.module.css';
+import { useQrCode } from './useQrCode.ts';
 
 const LOGO_SIZE = 32;
 
