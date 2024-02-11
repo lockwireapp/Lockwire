@@ -16,7 +16,6 @@
         "plasmo": "0.83.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-qrcode-logo": "2.9.0",
         "@lckw/lib-utils": "~0.0.1-dev",
         "@lckw/lib-models": "~0.0.1-dev",
         "@lckw/lib-services": "~0.0.1-dev"

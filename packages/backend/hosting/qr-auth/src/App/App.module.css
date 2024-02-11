@@ -1,0 +1,20 @@
+.wrap {
+    position: relative;
+    min-width: 166px;
+    min-height: 166px;
+}
+
+.state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.opacity {
+    opacity: 0.2;
+}
+
+:global(body) {
+    margin: 0;
+}

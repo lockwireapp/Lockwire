@@ -6,10 +6,10 @@ import { createService } from '../../utils';
 export interface IDeviceCredentials {
     id: string;
 
-    /* public key of device */
+    /* hosting key of device */
     key: string;
 
-    /* public key of server used for push message encryption */
+    /* hosting key of server used for push message encryption */
     serverSign: string;
 
     /* private key used to data decryption */

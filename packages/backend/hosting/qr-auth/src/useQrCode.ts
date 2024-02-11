@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { COMMUNICATION_PORT } from '~src/background/background.const';
-import { type IQrCodeData, QR_CODE_DATA } from '~src/actions/QRCodeData';
-import { QR_CODE_GET_FAIL } from '~src/actions/QrCodeGetFail';
-import { QR_CODE_EXPIRE } from '~src/actions/QRCodeExpire';
-import { QRCodeGet } from '~src/actions/QRCodeGet';
+import { COMMUNICATION_PORT } from '@lckw/browser/src/background/background.const';
+import { type IQrCodeData, QR_CODE_DATA } from '@lckw/browser/src/actions/QRCodeData';
+import { QR_CODE_GET_FAIL } from '@lckw/browser/src/actions/QrCodeGetFail';
+import { QR_CODE_EXPIRE } from '@lckw/browser/src/actions/QRCodeExpire';
+import { QRCodeGet } from '@lckw/browser/src/actions/QRCodeGet';
 
 export const useQrCode = () => {
     const [isSent, setSent] = useState(false);

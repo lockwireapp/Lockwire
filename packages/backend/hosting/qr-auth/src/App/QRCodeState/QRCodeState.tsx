@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from 'clsx';
 import styles from './QRCodeState.module.css';
-import { Tooltip } from '~src/popup/components/Tooltip';
+import { Tooltip } from '../components/Tooltip';
 
 interface IQRCodeStateProps {
     className?: string;
