@@ -1,6 +1,6 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
 
-console.log(process.env.GOOGLE_SERVICES_JSON);
+console.log({ GOOGLE_SERVICES_JSON: process.env.GOOGLE_SERVICES_JSON });
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
     ...config,
@@ -30,7 +30,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
             foregroundImage: './assets/adaptive-icon.png',
             backgroundColor: '#ffffff',
         },
-        googleServicesFile: `${process.env.GOOGLE_SERVICES_JSON}.json`,
+        googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
         permissions: [
             'android.permission.CAMERA',
             'android.permission.USE_BIOMETRIC',
