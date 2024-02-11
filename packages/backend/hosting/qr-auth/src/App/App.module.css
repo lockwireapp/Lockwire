@@ -1,7 +1,7 @@
 .wrap {
     position: relative;
-    min-width: 166px;
-    min-height: 166px;
+    width: 166px;
+    height: 166px;
 }
 
 .state {

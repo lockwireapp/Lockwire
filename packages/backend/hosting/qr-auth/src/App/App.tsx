@@ -3,12 +3,12 @@ import { QRCode } from 'react-qrcode-logo';
 import { QRCodeData } from '@lckw/lib-models';
 import { QRCodeState } from './QRCodeState';
 import styles from './App.module.css';
-import { useQrCode } from './useQrCode.ts';
+import { useSessionId } from './useSessionId.ts';
 
 const LOGO_SIZE = 32;
 
 export const App = () => {
-    const { data, loading, error } = useQrCode();
+    const { data, loading, error, initialized } = useSessionId();
     const qrCode = new QRCodeData({ id: data?.id, key: data?.key, error: error?.message });
 
     return (
@@ -23,7 +23,13 @@ export const App = () => {
                     eyeColor={'#222'}
                 />
             </div>
-            <QRCodeState size={LOGO_SIZE} className={styles.state} error={error?.message} loading={loading} />
+            <QRCodeState
+                size={LOGO_SIZE}
+                className={styles.state}
+                error={error?.message}
+                loading={loading}
+                success={initialized}
+            />
         </div>
     );
 };
